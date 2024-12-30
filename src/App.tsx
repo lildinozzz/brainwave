@@ -1,29 +1,19 @@
-import { ButtonGradient } from './assets/svg';
-import {
-  Hero,
-  Header,
-  Benefits,
-  Collaboration,
-  Services,
-  Pricing,
-  Footer,
-  Roadmap,
-} from './components';
+import { pathsConfig } from '@config/paths/pathsConfig';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { NotFoundPage, Chat } from './components';
+import { HomePage } from './pages';
 
 export const App = () => {
-  return (
-    <>
-      <div className='pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden'>
-        <Header />
-        <Hero />
-        <Benefits />
-        <Collaboration />
-        <Services />
-        <Pricing />
-        <Roadmap />
-        <Footer />
-      </div>
-      <ButtonGradient />
-    </>
-  );
+  const router = createBrowserRouter([
+    {
+      path: pathsConfig.home.link,
+      errorElement: <NotFoundPage />,
+      children: [
+        { path: pathsConfig.home.link, element: <HomePage /> },
+        { path: pathsConfig.chat.link, element: <Chat /> },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 };

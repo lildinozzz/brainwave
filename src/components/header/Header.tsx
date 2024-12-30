@@ -1,14 +1,13 @@
 import { useLocation } from 'react-router-dom';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
-
 import { useState } from 'react';
 import { brainwave } from '../../assets';
 import { navigation } from '../../constants';
 import { Link as RouterLink } from 'react-router-dom';
-import { Link } from '../link/Link';
 import { MenuSvg } from '../../assets/svg';
-import { Button } from '../button/Button';
 import { HamburgerMenu } from '../design/Header';
+import { Link, Button } from '@components';
+import { pathsConfig } from '@config/paths/pathsConfig';
 
 export const Header = () => {
   const pathname = useLocation();
@@ -38,7 +37,10 @@ export const Header = () => {
       }`}
     >
       <div className='flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4'>
-        <RouterLink className='block w-[12rem] xl:mr-8' to='#hero'>
+        <RouterLink
+          className='block w-[12rem] xl:mr-8'
+          to={pathsConfig.home.link}
+        >
           <img src={brainwave} width={190} height={40} alt='Brainwave' />
         </RouterLink>
 
@@ -56,7 +58,7 @@ export const Header = () => {
                 className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
                   item.onlyMobile ? 'lg:hidden' : ''
                 } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
-                  item.url === pathname.hash
+                  item.url === pathname.pathname
                     ? 'z-2 lg:text-n-1'
                     : 'lg:text-n-1/50'
                 } lg:leading-5 lg:hover:text-n-1 xl:px-12`}

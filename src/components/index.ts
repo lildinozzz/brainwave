@@ -1,4 +1,5 @@
 export { Button } from './button';
+export { Link } from './link';
 export { Header } from './header';
 export { Section } from './section';
 export { Hero } from './hero';
@@ -14,3 +15,5 @@ export { Tagline } from './tagline';
 export { PricingList } from './pricing-list';
 export { Roadmap } from './roadmap';
 export { Footer } from './footer';
+export { Chat } from './chat';
+export { NotFoundPage } from './not-found';

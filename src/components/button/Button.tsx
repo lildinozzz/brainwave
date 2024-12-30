@@ -5,7 +5,7 @@ type TButtonProps = {
   onClick?: () => void;
   children?: React.ReactNode;
   px?: string;
-  theme?: string;
+  theme?: boolean;
 };
 
 export const Button = ({

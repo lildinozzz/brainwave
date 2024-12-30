@@ -22,6 +22,20 @@
   }
 }
 
+@layer utilities {
+  .delay-02s {
+    animation-delay: 0.2s;
+  }
+
+  .delay-03s {
+    animation-delay: 0.3s;
+  }
+
+  .delay-04s {
+    animation-delay: 0.4s;
+  }
+}
+
 .rotate-45 {
   @apply rotate-[45deg];
 }
