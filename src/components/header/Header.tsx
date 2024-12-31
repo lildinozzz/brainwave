@@ -1,38 +1,31 @@
-import { useLocation } from 'react-router-dom';
-import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 import { useState } from 'react';
 import { brainwave } from '../../assets';
 import { navigation } from '../../constants';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { MenuSvg } from '../../assets/svg';
 import { HamburgerMenu } from '../design/Header';
-import { Link, Button } from '@components';
-import { pathsConfig } from '@config/paths/pathsConfig';
+import { Button } from '@components';
+import { pathsConfig } from '@config';
+import { scrollToNavElement } from '@shared';
+import { usePreventBodyScroll } from '@hooks';
 
 export const Header = () => {
-  const pathname = useLocation();
+  const location = useLocation();
   const [openNavigation, setOpenNavigation] = useState(false);
+  usePreventBodyScroll(openNavigation);
 
   const toggleNavigation = () => {
-    if (openNavigation) {
-      setOpenNavigation(false);
-      enablePageScroll();
-    } else {
-      setOpenNavigation(true);
-      disablePageScroll();
-    }
+    setOpenNavigation(!openNavigation);
   };
 
-  const handleClick = () => {
-    if (!openNavigation) return;
-
-    enablePageScroll();
+  const handleNavigationClick = (key: string) => {
+    scrollToNavElement(key);
     setOpenNavigation(false);
   };
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full z-50  border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm ${
+      className={`fixed top-0 left-0 w-full z-50 border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm ${
         openNavigation ? 'bg-n-8' : 'bg-n-8/90 backdrop-blur-sm'
       }`}
     >
@@ -54,11 +47,11 @@ export const Header = () => {
               <RouterLink
                 key={item.id}
                 to={item.url}
-                onClick={handleClick}
+                onClick={() => handleNavigationClick(item.url)}
                 className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
                   item.onlyMobile ? 'lg:hidden' : ''
                 } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
-                  item.url === pathname.pathname
+                  item.url === location.hash
                     ? 'z-2 lg:text-n-1'
                     : 'lg:text-n-1/50'
                 } lg:leading-5 lg:hover:text-n-1 xl:px-12`}
@@ -77,9 +70,12 @@ export const Header = () => {
         >
           New account
         </RouterLink>
-        <Link className='hidden lg:flex' href='#login'>
-          Sign in
-        </Link>
+        <RouterLink
+          to='#signIn'
+          className='button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block'
+        >
+          Sign In
+        </RouterLink>
 
         <Button
           className='ml-auto lg:hidden'

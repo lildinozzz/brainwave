@@ -1,8 +1,9 @@
+import { scrollToNavElement } from '@shared';
 import { grid, check2, loading1 } from '../../assets';
 import { roadmap } from '../../constants';
+import { Button } from '../button';
 import { Gradient } from '../design/Roadmap';
 import { Heading } from '../heading';
-import { Link } from '../link/Link';
 import { Section } from '../section';
 import { Tagline } from '../tagline';
 
@@ -38,7 +39,9 @@ export const Roadmap = () => (
 
                     <div className='flex items-center px-4 py-1 bg-n-1 rounded text-n-8'>
                       <img
-                        className='mr-2.5'
+                        className={`mr-2.5 ${
+                          item.status === 'done' ? '' : 'animate-spin'
+                        }`}
                         src={item.status === 'done' ? check2 : loading1}
                         width={16}
                         height={16}
@@ -69,7 +72,9 @@ export const Roadmap = () => (
       </div>
 
       <div className='flex justify-center mt-12 md:mt-15 xl:mt-20'>
-        <Link href='/roadmap'>Our roadmap</Link>
+        <Button onClick={() => scrollToNavElement('#roadmap')}>
+          Our roadmap
+        </Button>
       </div>
     </div>
   </Section>

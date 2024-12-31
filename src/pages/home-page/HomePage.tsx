@@ -7,6 +7,7 @@ import {
   Roadmap,
   Header,
   Footer,
+  Chat,
 } from '@components';
 
 export const HomePage = () => {
@@ -19,6 +20,7 @@ export const HomePage = () => {
       <Services />
       <Pricing />
       <Roadmap />
+      <Chat />
       <Footer />
     </div>
   );

@@ -1,11 +1,16 @@
-import { Link as RouterLink } from 'react-router-dom';
 import { smallSphere, stars } from '../../assets';
 import { LeftLine, RightLine } from '../design/Pricing';
 import { Heading } from '../heading';
 import { PricingList } from '../pricing-list';
 import { Section } from '../section';
+import { Button } from '../button';
+import { useState } from 'react';
 
 export const Pricing = () => {
+  const [showAllFeatures, setShowAllFeatures] = useState(false);
+
+  const toggleShowAllFeatures = () => setShowAllFeatures((prev) => !prev);
+
   return (
     <Section className='overflow-hidden' id='pricing'>
       <div className='container relative z-2'>
@@ -34,19 +39,21 @@ export const Pricing = () => {
         />
 
         <div className='relative'>
-          <PricingList />
+          <PricingList showAllFeatures={showAllFeatures} />
           <LeftLine />
           <RightLine />
         </div>
 
-        <div className='flex justify-center mt-10'>
-          <RouterLink
-            className='text-xs font-code font-bold tracking-wider uppercase border-b'
-            to='/pricing'
-          >
-            See the full details
-          </RouterLink>
-        </div>
+        {!showAllFeatures && (
+          <div className='flex justify-center mt-10'>
+            <Button
+              onClick={toggleShowAllFeatures}
+              className='text-xs font-code font-bold tracking-wider uppercase'
+            >
+              See the full details
+            </Button>
+          </div>
+        )}
       </div>
     </Section>
   );

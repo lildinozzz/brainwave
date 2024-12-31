@@ -1,5 +1,7 @@
-import { pathsConfig } from '@config/paths/pathsConfig';
+import { pathsConfig } from '@config';
 import {
+  amazon,
+  spotify,
   benefitIcon1,
   benefitIcon2,
   benefitIcon3,
@@ -8,13 +10,15 @@ import {
   chromecast,
   disc02,
   discord,
-  discordBlack,
-  facebook,
   figma,
   file02,
   framer,
+  github,
+  google,
   homeSmile,
   instagram,
+  linkedin,
+  netflix,
   notification2,
   notification3,
   notification4,
@@ -33,8 +37,6 @@ import {
   slack,
   sliders04,
   telegram,
-  twitter,
-  yourlogo,
 } from '../assets';
 
 type TNavigation = {
@@ -48,33 +50,33 @@ export const navigation: TNavigation[] = [
   {
     id: '0',
     title: 'Features',
-    url: pathsConfig.features.link,
+    url: pathsConfig.features.key,
   },
   {
     id: '1',
     title: 'Pricing',
-    url: pathsConfig.pricing.link,
+    url: pathsConfig.pricing.key,
   },
   {
     id: '2',
     title: 'How to use',
-    url: pathsConfig.how_to_use.link,
+    url: pathsConfig.how_to_use.key,
   },
   {
     id: '3',
     title: 'Roadmap',
-    url: pathsConfig.roadmap.link,
+    url: pathsConfig.roadmap.key,
   },
   {
     id: '4',
     title: 'New account',
-    url: pathsConfig.signUp.link,
+    url: pathsConfig.signUp.key,
     onlyMobile: true,
   },
   {
     id: '5',
     title: 'Sign in',
-    url: pathsConfig.signIn.link,
+    url: pathsConfig.signIn.key,
     onlyMobile: true,
   },
 ];
@@ -83,7 +85,7 @@ export const heroIcons = [homeSmile, file02, searchMd, plusSquare];
 
 export const notificationImages = [notification4, notification3, notification2];
 
-export const companyLogos = [yourlogo, yourlogo, yourlogo, yourlogo, yourlogo];
+export const companyLogos = [google, amazon, figma, netflix, spotify];
 
 export const brainwaveServices = [
   'Photo generating',
@@ -223,6 +225,8 @@ export const pricing = [
       'An AI chatbot that can understand your queries',
       'Personalized recommendations based on your preferences',
       'Ability to explore the app and its features without any cost',
+      'Basic email support for any questions or concerns',
+      'Access to a limited set of FAQ responses to quickly solve common issues',
     ],
   },
   {
@@ -234,6 +238,8 @@ export const pricing = [
       'An advanced AI chatbot that can understand complex queries',
       'An analytics dashboard to track your conversations',
       'Priority support to solve issues quickly',
+      'Access to a growing library of exclusive AI tools',
+      'Ability to schedule chatbot responses for specific times',
     ],
   },
   {
@@ -245,6 +251,8 @@ export const pricing = [
       'Personalized recommendations based on your preferences',
       '24/7 customer support with a dedicated account manager',
       'Integration with third-party business tools and APIs',
+      'Advanced AI that adapts and improves with every interaction',
+      'Dedicated server for faster and more secure processing',
     ],
   },
 ];
@@ -305,32 +313,26 @@ export const benefits = [
 export const socials = [
   {
     id: '0',
-    title: 'Discord',
-    iconUrl: discordBlack,
-    url: '#',
+    title: 'Github',
+    iconUrl: github,
+    url: 'https://github.com/lildinozzz',
   },
   {
     id: '1',
-    title: 'Twitter',
-    iconUrl: twitter,
-    url: '#',
+    title: 'Linkedin',
+    iconUrl: linkedin,
+    url: 'https://www.linkedin.com/in/kim-artur/',
   },
   {
     id: '2',
     title: 'Instagram',
     iconUrl: instagram,
-    url: '#',
+    url: 'https://www.instagram.com/lildinbch',
   },
   {
     id: '3',
     title: 'Telegram',
     iconUrl: telegram,
-    url: '#',
-  },
-  {
-    id: '4',
-    title: 'Facebook',
-    iconUrl: facebook,
-    url: '#',
+    url: 'https://t.me/akimdev',
   },
 ];

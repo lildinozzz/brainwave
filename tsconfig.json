@@ -3,8 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@config/*": ["./config/*"],
-      "@components": ["./src/components/index"]
+      "@config": ["./config/index"],
+      "@components": ["./src/components/index"],
+      "@pages": ["./src/pages/index"],
+      "@shared": ["./src/shared/index"],
+      "@hooks": ["./src/hooks/index"],
+      "@store": ["./src/store/store"]
     },
     "module": "ES2020",
     "target": "ES2020",

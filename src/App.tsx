@@ -1,19 +1,21 @@
-import { pathsConfig } from '@config/paths/pathsConfig';
+import { HomePage, NotFoundPage } from '@pages';
+import { store } from '@store';
+import { pathsConfig } from '@config';
+import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { NotFoundPage, Chat } from './components';
-import { HomePage } from './pages';
 
 export const App = () => {
   const router = createBrowserRouter([
     {
       path: pathsConfig.home.link,
       errorElement: <NotFoundPage />,
-      children: [
-        { path: pathsConfig.home.link, element: <HomePage /> },
-        { path: pathsConfig.chat.link, element: <Chat /> },
-      ],
+      children: [{ path: pathsConfig.home.link, element: <HomePage /> }],
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 };

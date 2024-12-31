@@ -8,7 +8,6 @@ export interface IPathsConfig {
   pricing: IRoute;
   roadmap: IRoute;
   features: IRoute;
-  chat: IRoute;
   how_to_use: IRoute;
   signIn: IRoute;
   signUp: IRoute;
@@ -21,28 +20,23 @@ export const pathsConfig: IPathsConfig = {
   },
 
   features: {
-    key: 'features',
+    key: '#features',
     link: '/features',
   },
 
   how_to_use: {
-    key: 'how-to-use',
+    key: '#how-to-use',
     link: '/how-to-use',
   },
 
   pricing: {
-    key: 'pricing',
+    key: '#pricing',
     link: '/pricing',
   },
 
   roadmap: {
-    key: 'roadmap',
+    key: '#roadmap',
     link: '/roadmap',
-  },
-
-  chat: {
-    key: 'chat',
-    link: '/chat',
   },
 
   signIn: {

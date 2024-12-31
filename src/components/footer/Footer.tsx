@@ -9,7 +9,7 @@ export const Footer = () => {
           © {new Date().getFullYear()}. All rights reserved.
         </p>
 
-        <ul className='flex gap-5 flex-wrap'>
+        <ul className='flex gap-5 flex-wrap mr-10'>
           {socials.map((item) => (
             <a
               key={item.id}
@@ -17,7 +17,7 @@ export const Footer = () => {
               target='_blank'
               className='flex items-center justify-center w-10 h-10 bg-n-7 rounded-full transition-colors hover:bg-n-6'
             >
-              <img src={item.iconUrl} width={16} height={16} alt={item.title} />
+              <img src={item.iconUrl} alt={item.title} />
             </a>
           ))}
         </ul>

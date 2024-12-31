@@ -16,4 +16,3 @@ export { PricingList } from './pricing-list';
 export { Roadmap } from './roadmap';
 export { Footer } from './footer';
 export { Chat } from './chat';
-export { NotFoundPage } from './not-found';

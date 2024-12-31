@@ -1,5 +1,4 @@
 import { curve, heroBackground, robot } from '../../assets';
-import { Link } from '../link/Link';
 import { Section } from '../section';
 import { heroIcons } from '../../constants';
 import { ScrollParallax } from 'react-just-parallax';
@@ -8,6 +7,8 @@ import { BackgroundCircles, BottomLine, Gradient } from '../design/Hero';
 import { Generating } from '../generating';
 import { Notification } from '../notification';
 import { CompanyLogos } from '../company-logos';
+import { Button } from '../button';
+import { scrollToNavElement } from '@shared';
 export const Hero = () => {
   const parallaxRef = useRef(null);
 
@@ -15,7 +16,7 @@ export const Hero = () => {
     <Section className='pt-[12rem] -mt-[5.25rem]' id='hero'>
       <div className='container relative' ref={parallaxRef}>
         <div className='relative z-1 max-w-[62rem] mx-auto text-center mb-[4rem] md:mb-20 lg:mb:[6rem]'>
-          <h1 className='h1 mb-6'>
+          <h1 className='h1 mb-6 lg:mt-[5rem]'>
             Explore the Possibilities of&nbsp;AI&nbsp;Chatting with{' '}
             <span className='inline-block relative'>
               Brainwave
@@ -32,9 +33,9 @@ export const Hero = () => {
             Unleash the power of AI with Brainwave. Upgrade your productivity
             with Brainwave, the open AI chat app
           </p>
-          <Link href='/pricing' theme>
+          <Button onClick={() => scrollToNavElement('#pricing')} theme>
             Get Started
-          </Link>
+          </Button>
         </div>
         <div className='relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-24'>
           <div className='relative z-1 p-0.5 rounded-2xl bg-conic-gradient'>
