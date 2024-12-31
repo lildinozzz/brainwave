@@ -29,7 +29,7 @@ export const Header = () => {
         openNavigation ? 'bg-n-8' : 'bg-n-8/90 backdrop-blur-sm'
       }`}
     >
-      <div className='flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4'>
+      <div className='flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4 h-[84px]'>
         <RouterLink
           className='block w-[12rem] xl:mr-8'
           to={pathsConfig.home.link}
@@ -42,24 +42,26 @@ export const Header = () => {
             openNavigation ? 'flex' : 'hidden'
           } fixed top-[5rem] left-0 right-0 bottom-0 bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent`}
         >
-          <div className='relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row'>
-            {navigation.map((item) => (
-              <RouterLink
-                key={item.id}
-                to={item.url}
-                onClick={() => handleNavigationClick(item.url)}
-                className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
-                  item.onlyMobile ? 'lg:hidden' : ''
-                } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
-                  item.url === location.hash
-                    ? 'z-2 lg:text-n-1'
-                    : 'lg:text-n-1/50'
-                } lg:leading-5 lg:hover:text-n-1 xl:px-12`}
-              >
-                {item.title}
-              </RouterLink>
-            ))}
-          </div>
+          {location.pathname === pathsConfig.home.link && (
+            <div className='relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row'>
+              {navigation.map((item) => (
+                <RouterLink
+                  key={item.id}
+                  to={item.url}
+                  onClick={() => handleNavigationClick(item.url)}
+                  className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
+                    item.onlyMobile ? 'lg:hidden' : ''
+                  } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
+                    item.url === location.hash
+                      ? 'z-2 lg:text-n-1'
+                      : 'lg:text-n-1/50'
+                  } lg:leading-5 lg:hover:text-n-1 xl:px-12`}
+                >
+                  {item.title}
+                </RouterLink>
+              ))}
+            </div>
+          )}
 
           <HamburgerMenu />
         </nav>

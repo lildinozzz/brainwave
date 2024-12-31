@@ -28,6 +28,22 @@ export const MessageInput = ({
   handleEmojiSelect,
   isEmojiPickerVisible,
 }: TMessageInputProps) => {
+  const handleSendMessageAndFocus = () => {
+    handleSendMessage();
+  };
+
+  const handleEmojiSelectClick = (emoji: { native: string }) => {
+    handleEmojiSelect(emoji);
+  };
+
+  const handleEmojiPickerClick = () => {
+    toggleEmojiPicker();
+  };
+
+  const handleFileButtonClick = () => {
+    document.getElementById('file-input')?.click();
+  };
+
   return (
     <div className='absolute bottom-0 w-full bg-white px-[22px] py-[20px] rounded-b-[15px]'>
       {tempFile?.data && (
@@ -49,17 +65,17 @@ export const MessageInput = ({
         <div className='absolute right-[6px] top-1/2 transform -translate-y-1/2 flex gap-[3px]'>
           <button
             type='button'
-            onClick={toggleEmojiPicker}
+            onClick={handleEmojiPickerClick}
             className='h-[35px] w-[35px] border-none transition-all duration-200 ease-in-out text-[#706db0] bg-white rounded-full text-[1.15rem] hover:bg-[#f1f1ff] flex items-center justify-center'
           >
             <SatisfiedIcon />
           </button>
 
           {isEmojiPickerVisible && (
-            <div className='absolute bottom-[4rem] -right-[1rem] md:right-[5px]  z-10'>
+            <div className='absolute bottom-[4rem] -right-[0.3rem] md:right-[5px]  z-10'>
               <Picker
                 data={data}
-                onEmojiSelect={handleEmojiSelect}
+                onEmojiSelect={handleEmojiSelectClick}
                 searchPosition='none'
                 previewPosition='none'
               />
@@ -76,7 +92,7 @@ export const MessageInput = ({
             />
             <button
               type='button'
-              onClick={() => document.getElementById('file-input')?.click()}
+              onClick={handleFileButtonClick}
               className='h-[35px] w-[35px] border-none transition-all duration-200 ease-in-out text-[#706db0] bg-white rounded-full text-[1.15rem] hover:bg-[#f1f1ff] flex items-center justify-center'
             >
               <FileIcon />
@@ -86,7 +102,7 @@ export const MessageInput = ({
           <button
             disabled={isAnyMessagePending || !inputValue.length}
             type='button'
-            onClick={handleSendMessage}
+            onClick={handleSendMessageAndFocus}
             className={`ml-[2px] h-[35px] w-[35px] border-none transition-all duration-200 ease-in-out text-white rounded-full text-[1.15rem] 
               ${
                 isAnyMessagePending || !inputValue.length

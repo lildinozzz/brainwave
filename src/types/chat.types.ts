@@ -15,3 +15,11 @@ export type TFileMessage = {
   data: string;
   mime_type: string;
 };
+
+export type TPricing = {
+  id: string;
+  title: string;
+  description: string;
+  price: string;
+  features: string[];
+};

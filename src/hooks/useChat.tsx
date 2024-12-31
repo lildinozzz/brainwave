@@ -136,9 +136,10 @@ export const useChat = () => {
     try {
       const apiResponseText = await fetchAIResponse();
       updateMessageWithResponse(apiResponseText);
-    } catch (error) {
-      console.error('Error generating AI response:', error);
-      updateMessageWithResponse("Sorry, I couldn't process your request.");
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        updateMessageWithResponse(error.response?.data.error.message);
+      }
     }
   };
 

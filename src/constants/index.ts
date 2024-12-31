@@ -38,6 +38,7 @@ import {
   sliders04,
   telegram,
 } from '../assets';
+import { TPricing } from 'src/types/chat.types';
 
 type TNavigation = {
   id: string;
@@ -215,7 +216,7 @@ export const collabApps = [
   },
 ];
 
-export const pricing = [
+export const pricing: TPricing[] = [
   {
     id: '0',
     title: 'Basic',
