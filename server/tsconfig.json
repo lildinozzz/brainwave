@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "baseUrl": ".",
+    "paths": {
+      "@config": ["./src/config/index"],
+      "@types": ["./src/types/index"],
+      "@utils": ["./src/utils/index"],
+      "@routers": ["./src/routers/index"],
+      "@middlewares": ["./src/middlewares/index"]
+    },
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*", "db/**/*"]
+}
