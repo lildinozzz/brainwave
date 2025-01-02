@@ -1,4 +1,5 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { brainwaveSymbol, check } from 'src/assets';
 import { pricing } from 'src/constants';
 import { useAuthModal } from 'src/features/auth/AuthModal';
@@ -25,8 +26,15 @@ export const PaymentSelectForm = memo(
       }
     };
 
+    useEffect(() => {
+      if (!selectedPlan && pricing.length > 0) {
+        setSelectedPlan(pricing[1]);
+      }
+    }, [selectedPlan]);
+
     const handleGoToPayment = () => {
       if (!isAuthed) {
+        toast.warn('You must be logged in to complete the payment.');
         AuthModal({});
         return;
       }
@@ -51,6 +59,7 @@ export const PaymentSelectForm = memo(
             return (
               <div
                 key={id}
+                onClick={() => handleSelectionChange(id)}
                 className={`flex items-center gap-4 w-full lg:w-[50rem] lg:mx-auto h-20 mt-4 border rounded-xl px-6 py-2 ${
                   selectedPlan?.id === id ? 'border-[#AC6AFF]' : 'border-n-6'
                 }`}
@@ -60,7 +69,6 @@ export const PaymentSelectForm = memo(
                   name='paymentOption'
                   id={id}
                   checked={selectedPlan?.id === id}
-                  onChange={() => handleSelectionChange(id)}
                   className='w-5 h-5'
                 />
                 <div className='flex flex-col'>

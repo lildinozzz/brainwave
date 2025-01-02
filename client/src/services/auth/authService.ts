@@ -13,7 +13,9 @@ class AuthService {
       );
 
       if (response.status !== 200)
-        return Promise.reject(new Error('ошибка на фронте с регой'));
+        return Promise.reject(
+          new Error(`Expected status 200, received ${response.status}`)
+        );
 
       return {
         ...response.data,
@@ -21,8 +23,7 @@ class AuthService {
         isAuthed: true,
       };
     } catch (error) {
-      console.error('Error during registration request:', error);
-      return Promise.reject(new Error('Ошибка при отправке запроса'));
+      throw new Error(`Unknown error occured with authentication, ${error}`);
     }
   }
 

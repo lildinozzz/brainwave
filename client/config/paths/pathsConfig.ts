@@ -9,7 +9,6 @@ export interface IPathsConfig {
   roadmap: IRoute;
   features: IRoute;
   how_to_use: IRoute;
-  success: IRoute;
   signIn: IRoute;
   signUp: IRoute;
   logout: IRoute;
@@ -34,11 +33,6 @@ export const pathsConfig: IPathsConfig = {
   payment: {
     key: '#pricing',
     link: '/payment',
-  },
-
-  success: {
-    key: '#payment-success',
-    link: '/payment-success',
   },
 
   roadmap: {

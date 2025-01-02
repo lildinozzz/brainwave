@@ -13,13 +13,6 @@ authRouter.post('/authenticate', async (req: Request, res: Response) => {
     const { email, password } = req.body;
     const userUUID = uuidv4();
 
-    if (!email || !password) {
-      res
-        .status(400)
-        .json({ message: 'Проверьте на заполненность всех полей' });
-      return;
-    }
-
     const [user, created] = await User.findOrCreate({
       where: { email },
       defaults: {

@@ -1,10 +1,4 @@
-import {
-  HomePage,
-  NotFoundPage,
-  PaymentSuccessPage,
-  PaymentPage,
-  Root,
-} from '@pages';
+import { HomePage, NotFoundPage, PaymentPage, Root } from '@pages';
 import { pathsConfig } from '@config';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { useAppDispatch } from './store/hooks';
@@ -27,7 +21,6 @@ export const App = () => {
       children: [
         { path: pathsConfig.home.link, element: <HomePage /> },
         { path: pathsConfig.payment.link, element: <PaymentPage /> },
-        { path: pathsConfig.success.link, element: <PaymentSuccessPage /> },
       ],
     },
   ]);

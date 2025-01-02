@@ -2,7 +2,7 @@ import type { AxiosInstance } from 'axios';
 import apiAxiosInstance from './apiAxiosInstance';
 import { convertToSubCurrency } from '@utils';
 
-class StripeService {
+class PaymentService {
   constructor(private client: AxiosInstance) {}
 
   async createPayment(amount: number) {
@@ -22,6 +22,6 @@ class StripeService {
   }
 }
 
-const stripeService = new StripeService(apiAxiosInstance);
+const paymentService = new PaymentService(apiAxiosInstance);
 
-export { stripeService };
+export { paymentService };

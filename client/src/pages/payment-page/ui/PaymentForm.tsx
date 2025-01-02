@@ -6,7 +6,8 @@ import {
 } from '@stripe/react-stripe-js';
 import { StripePaymentElementChangeEvent } from '@stripe/stripe-js';
 import { useEffect, useState } from 'react';
-import { stripeService } from 'src/services/api/stripeService';
+import { toast } from 'react-toastify';
+import { paymentService } from 'src/services/api/paymentService';
 import { PagePreLoader } from 'src/shared/components/PagePreLoader';
 import { Preloader } from 'src/shared/components/PreLoader';
 
@@ -18,9 +19,10 @@ export const PaymentForm = ({ amount }: TPricingFormProps) => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [clientSecret, setClientSecret] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isFormError, setIsFormError] = useState(false);
+  const [clientSecret, setClientSecret] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isFormError, setIsFormError] = useState<boolean>(false);
+  const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
 
   const handleChange = (e: StripePaymentElementChangeEvent) => {
     if (e.complete) {
@@ -30,9 +32,14 @@ export const PaymentForm = ({ amount }: TPricingFormProps) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await stripeService.createPayment(amount);
-
-      setClientSecret(response.clientSecret);
+      try {
+        const response = await paymentService.createPayment(amount);
+        setClientSecret(response.clientSecret);
+        setIsDataLoaded(true);
+      } catch (error) {
+        console.error('Ошибка при загрузке clientSecret', error);
+        setIsDataLoaded(true);
+      }
     };
 
     fetchData();
@@ -57,17 +64,17 @@ export const PaymentForm = ({ amount }: TPricingFormProps) => {
         elements,
         clientSecret,
         confirmParams: {
-          return_url: `http://localhost:5173${pathsConfig.success.link}?amount=${amount}`,
+          return_url: `http://localhost:5173${pathsConfig.home.link}?amount=${amount}`,
         },
       });
     } catch (error) {
-      console.error('error while creating a payment', error);
+      toast.error(`Payment failed: ${error}`);
     } finally {
       setIsLoading(false);
     }
   };
 
-  if (!clientSecret || !stripe || !elements) {
+  if (!isDataLoaded || !clientSecret || !stripe || !elements) {
     return <PagePreLoader />;
   }
 
@@ -79,7 +86,7 @@ export const PaymentForm = ({ amount }: TPricingFormProps) => {
       {clientSecret && <PaymentElement onChange={handleChange} />}
 
       <button
-        className='text-black w-full h-[3rem] mt-3.5 cursor-pointer p-5 bg-white rounded-xl font-bold isabled:opacity-50 disabled:cursor-not-allowed disabled:animate-pulse flex justify-center items-center'
+        className='text-black w-full h-[3rem] mt-3.5 cursor-pointer p-5 bg-white rounded-xl font-bold disabled:opacity-50 disabled:cursor-not-allowed disabled:animate-pulse flex justify-center items-center'
         disabled={!stripe || isLoading || !isFormError}
       >
         {!isLoading ? `Pay $${amount}` : <Preloader className='w-8 h-8' />}

@@ -1,1 +1,0 @@
-export { PaymentSuccessPage } from './PaymentSuccessPage';

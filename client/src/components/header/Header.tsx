@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { brainwave } from '../../assets';
 import { navigation } from '../../constants';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { MenuSvg } from '../../assets/svg';
 import { HamburgerMenu } from '../design/Header';
 import { Button } from '@components';
@@ -18,6 +18,7 @@ export const Header = () => {
   const { isAuthed } = useAppSelector(userInfoSelectors.userInfo);
   const [isOpenedNavigation, setIsOpenedNavigation] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const [AuthModal] = useAuthModal();
 
   usePreventBodyScroll(isOpenedNavigation);
@@ -38,6 +39,7 @@ export const Header = () => {
   const handleNavigationClick = (key: string) => {
     if (key === pathsConfig.logout.key) {
       dispatch(logout());
+      navigate(pathsConfig.home.link);
       setIsOpenedNavigation(false);
       return;
     }
@@ -77,7 +79,14 @@ export const Header = () => {
                 (item.url === pathsConfig.signIn.key ||
                   item.url === pathsConfig.signUp.key);
 
-              if (shouldHideLogoutItem || shouldHideAuthItems) {
+              const shouldHideMainItems =
+                !item.onlyMobile && location.pathname !== pathsConfig.home.link;
+
+              if (
+                shouldHideLogoutItem ||
+                shouldHideAuthItems ||
+                shouldHideMainItems
+              ) {
                 return null;
               }
 
