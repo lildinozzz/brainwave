@@ -1,7 +1,7 @@
 import { StoreT } from '@store';
 import type { AxiosError } from 'axios';
 import axios from 'axios';
-import { authService } from '../auth/authService';
+import { authService } from '../auth/AuthService';
 
 const apiAxiosInstance = axios.create({
   baseURL: `${import.meta.env.VITE_APP_API_URL}/api`,

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { authService } from 'src/services/auth/authService';
+import { authService } from 'src/services/auth/AuthService';
 import { TAuthState, TAuthForm } from 'src/services/auth/types';
 
 export const authenticate = createAsyncThunk<TAuthState, TAuthForm>(

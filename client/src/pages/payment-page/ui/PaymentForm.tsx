@@ -7,7 +7,7 @@ import {
 import { StripePaymentElementChangeEvent } from '@stripe/stripe-js';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { paymentService } from 'src/services/api/paymentService';
+import { paymentService } from 'src/services/api/PaymentService';
 import { PagePreLoader } from 'src/shared/components/PagePreLoader';
 import { Preloader } from 'src/shared/components/PreLoader';
 
