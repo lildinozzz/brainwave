@@ -4,6 +4,7 @@ import {
   useElements,
   PaymentElement,
 } from '@stripe/react-stripe-js';
+import { StripePaymentElementChangeEvent } from '@stripe/stripe-js';
 import { useEffect, useState } from 'react';
 import { stripeService } from 'src/services/api/stripeService';
 import { PagePreLoader } from 'src/shared/components/PagePreLoader';
@@ -13,12 +14,19 @@ type TPricingFormProps = {
   amount: number;
 };
 
-export const PricingForm = ({ amount }: TPricingFormProps) => {
+export const PaymentForm = ({ amount }: TPricingFormProps) => {
   const stripe = useStripe();
   const elements = useElements();
 
   const [clientSecret, setClientSecret] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isFormError, setIsFormError] = useState(false);
+
+  const handleChange = (e: StripePaymentElementChangeEvent) => {
+    if (e.complete) {
+      setIsFormError(true);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,21 +68,19 @@ export const PricingForm = ({ amount }: TPricingFormProps) => {
   };
 
   if (!clientSecret || !stripe || !elements) {
-    return (
-      <PagePreLoader className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%}' />
-    );
+    return <PagePreLoader />;
   }
 
   return (
     <form
-      className='w-full h-full max-w-[30rem] p-6 px-6 bg-n-8 border border-n-6 rounded-[2rem] mt-2 :lg-w-auto relative'
+      className='max-w-[35rem] h-full mt-3 m-auto pb-6 py-2 px-6 border border-n-6 rounded-[2rem]'
       onSubmit={handleSubmit}
     >
-      {clientSecret && <PaymentElement />}
+      {clientSecret && <PaymentElement onChange={handleChange} />}
 
       <button
-        className='text-black w-full mt-4 cursor-pointer p-5 bg-white rounded-xl font-bold isabled:opacity-50 disabled:cursor-not-allowed disabled:animate-pulse flex justify-center items-center'
-        disabled={!stripe || isLoading}
+        className='text-black w-full h-[3rem] mt-3.5 cursor-pointer p-5 bg-white rounded-xl font-bold isabled:opacity-50 disabled:cursor-not-allowed disabled:animate-pulse flex justify-center items-center'
+        disabled={!stripe || isLoading || !isFormError}
       >
         {!isLoading ? `Pay $${amount}` : <Preloader className='w-8 h-8' />}
       </button>

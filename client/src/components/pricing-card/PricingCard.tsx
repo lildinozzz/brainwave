@@ -1,13 +1,13 @@
 import { check } from 'src/assets';
 import { Button } from '../button';
-import { TPricing } from 'src/types/chat.types';
+import { TPayment } from 'src/types/chat.types';
 import { useNavigate } from 'react-router-dom';
-import { setPlan } from 'src/store/reducers/payment/dispatchers';
+import { setSelectedPlan } from 'src/store/reducers/payment/dispatchers';
 import { pathsConfig } from '@config';
-import { setIsChatOpen } from 'src/store/reducers/common-ui/dispatchers';
+import { setIsChatOpened } from 'src/store/reducers/common-ui/dispatchers';
 
 type PricingCardProps = {
-  item: TPricing | null;
+  item: TPayment | null;
   showAllFeatures: boolean;
   hideBtn?: boolean;
   className?: string;
@@ -21,13 +21,13 @@ export const PricingCard = ({
 }: PricingCardProps) => {
   const navigate = useNavigate();
 
-  const handleGoToPricing = (item: TPricing | null) => {
+  const handleGoToPricing = (item: TPayment | null) => {
     if (Number(item?.price) > 0) {
-      setPlan(item);
+      setSelectedPlan(item);
       navigate(pathsConfig.payment.link);
+    } else {
+      setIsChatOpened(true);
     }
-
-    setIsChatOpen(true);
   };
 
   const pricingFeatures = showAllFeatures

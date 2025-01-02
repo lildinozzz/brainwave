@@ -1,8 +1,8 @@
-import { TCommonUIInitialState, TSetIsChatOpen } from 'src/types/store.types';
+import { TCommonUIInitialState, TsetIsChatOpened } from 'src/types/store.types';
 
-export const setIsChatOpen = (
+export const setIsChatOpened = (
   state: TCommonUIInitialState,
-  action: TSetIsChatOpen
+  action: TsetIsChatOpened
 ) => {
-  state.isChatOpen = action.payload;
+  state.isChatOpened = action.payload;
 };

@@ -38,7 +38,7 @@ import {
   sliders04,
   telegram,
 } from '../assets';
-import { TPricing } from 'src/types/chat.types';
+import { TPayment } from 'src/types/chat.types';
 
 type TNavigation = {
   id: string;
@@ -216,9 +216,9 @@ export const collabApps = [
   },
 ];
 
-export const pricing: TPricing[] = [
+export const pricing: TPayment[] = [
   {
-    id: '0',
+    id: '1',
     title: 'Basic',
     description: 'AI chatbot, personalized recommendations',
     price: '0',
@@ -231,7 +231,7 @@ export const pricing: TPricing[] = [
     ],
   },
   {
-    id: '1',
+    id: '2',
     title: 'Premium',
     description: 'Advanced AI chatbot, priority support, analytics dashboard',
     price: '9.99',
@@ -244,7 +244,7 @@ export const pricing: TPricing[] = [
     ],
   },
   {
-    id: '2',
+    id: '3',
     title: 'Enterprise',
     description: 'Custom AI chatbot, advanced analytics, dedicated account',
     price: '29.99',

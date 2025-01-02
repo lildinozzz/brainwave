@@ -1,5 +1,5 @@
 import { PayloadAction as PA } from '@reduxjs/toolkit';
-import { TPricing } from './chat.types';
+import { TPayment } from './chat.types';
 import { TAuthState, TUserFromBackend } from 'src/services/auth/types';
 
 export type TStore = {
@@ -9,16 +9,16 @@ export type TStore = {
 };
 
 export type TCommonUIInitialState = {
-  isChatOpen: boolean;
+  isChatOpened: boolean;
 };
 
 export type TPaymentState = {
-  plan: TPricing | null;
+  selectedPlan: TPayment | null;
 };
 
-export type TSetIsChatOpen = PA<TCommonUIInitialState['isChatOpen']>;
+export type TsetIsChatOpened = PA<TCommonUIInitialState['isChatOpened']>;
 
-export type TSetPlan = PA<TPaymentState['plan']>;
+export type TSetPlan = PA<TPaymentState['selectedPlan']>;
 
 export type TUserInfoState = {
   user: TUserFromBackend;

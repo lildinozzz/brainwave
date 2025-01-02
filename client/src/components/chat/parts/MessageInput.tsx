@@ -88,7 +88,7 @@ export const MessageInput = ({
               accept='image/*'
               id='file-input'
               hidden
-              onChange={(e) => handleFileUpload(e)}
+              onChange={handleFileUpload}
             />
             <button
               type='button'

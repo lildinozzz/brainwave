@@ -8,6 +8,7 @@ const initialState: TAuthState = {
     status: 'unknown',
   },
   isAuthed: false,
+  successInvoiceCount: 0
 };
 
 export const { actions, reducer } = createSlice({

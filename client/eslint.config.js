@@ -18,13 +18,10 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
     },
     rules: {
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': 'off',
       '@typescript-eslint/no-throw-literal': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
     },
   }
 );

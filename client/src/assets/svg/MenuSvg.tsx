@@ -1,8 +1,8 @@
 type TMenuSvg = {
-  openNavigation: boolean;
+  isOpenedNavigation: boolean;
 };
 
-export const MenuSvg = ({ openNavigation }: TMenuSvg) => {
+export const MenuSvg = ({ isOpenedNavigation }: TMenuSvg) => {
   return (
     <svg
       className='overflow-visible'
@@ -12,21 +12,21 @@ export const MenuSvg = ({ openNavigation }: TMenuSvg) => {
     >
       <rect
         className='transition-all origin-center'
-        y={openNavigation ? '5' : '0'}
+        y={isOpenedNavigation ? '5' : '0'}
         width='20'
         height='2'
         rx='1'
         fill='white'
-        transform={`rotate(${openNavigation ? '45' : '0'})`}
+        transform={`rotate(${isOpenedNavigation ? '45' : '0'})`}
       />
       <rect
         className='transition-all origin-center'
-        y={openNavigation ? '5' : '10'}
+        y={isOpenedNavigation ? '5' : '10'}
         width='20'
         height='2'
         rx='1'
         fill='white'
-        transform={`rotate(${openNavigation ? '-45' : '0'})`}
+        transform={`rotate(${isOpenedNavigation ? '-45' : '0'})`}
       />
     </svg>
   );

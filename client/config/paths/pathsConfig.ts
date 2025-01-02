@@ -31,7 +31,7 @@ export const pathsConfig: IPathsConfig = {
   },
 
   payment: {
-    key: '#payment',
+    key: '#pricing',
     link: '/payment',
   },
 

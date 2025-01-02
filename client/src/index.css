@@ -16,6 +16,12 @@
   scroll-behavior: smooth;
 }
 
+.select {
+  font-size: 12px;
+  padding: 5px;
+  height: auto;
+}
+
 @layer base {
   body {
     @apply font-sans bg-n-8 text-n-1 text-base;
@@ -39,6 +45,26 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+}
+
+.center-last {
+  text-align-last: center;
 }
 
 .rotate-45 {

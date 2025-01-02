@@ -1,37 +1,43 @@
-import { PricingCard } from '@components';
-import { PricingForm } from './ui/PricingForm';
+import { useState } from 'react';
+import { PaymentSelectForm } from './ui/PaymentSelectForm';
 import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
 import { convertToSubCurrency } from '@utils';
+import { PaymentForm } from './ui/PaymentForm';
 import { useAppSelector } from 'src/store/hooks';
 import { paymentSelectors } from 'src/store/reducers/payment/selectors';
+import { loadStripe } from '@stripe/stripe-js';
 
 const STRIPE_PROMISE = loadStripe(import.meta.env.VITE_STRIPE_PUBLISH_KEY);
 
 export const PaymentPage = () => {
-  const { plan } = useAppSelector(paymentSelectors.paymentInfo);
-  const amount = Number(plan?.price);
+  const [isContinuePayment, setIsContinuePayment] = useState(false);
+  const { selectedPlan } = useAppSelector(paymentSelectors.paymentInfo);
+
+  const amount = Number(selectedPlan?.price);
+  const toggleContinuePaymentState = () =>
+    setIsContinuePayment((prev) => !prev);
 
   return (
-    //w-full h-screen pt-[5.5rem] flex justify-around items-center
-    <div className='pt-[5.5rem] px-[1.5rem] lg:flex lg:justify-around'>
-      <PricingCard
-        className='max-w-[30rem]'
-        showAllFeatures
-        item={plan}
-        hideBtn
-      />
-      <Elements
-        stripe={STRIPE_PROMISE}
-        options={{
-          appearance: { theme: 'night' },
-          mode: 'payment',
-          amount: convertToSubCurrency(amount),
-          currency: 'usd',
-        }}
-      >
-        <PricingForm amount={amount} />
-      </Elements>
+    <div className='pt-[5.5rem] px-[1.5rem]'>
+      {!isContinuePayment && (
+        <PaymentSelectForm
+          toggleContinuePaymentState={toggleContinuePaymentState}
+        />
+      )}
+
+      {isContinuePayment && (
+        <Elements
+          stripe={STRIPE_PROMISE}
+          options={{
+            appearance: { theme: 'night' },
+            mode: 'payment',
+            amount: convertToSubCurrency(amount),
+            currency: 'usd',
+          }}
+        >
+          <PaymentForm amount={amount} />
+        </Elements>
+      )}
     </div>
   );
 };

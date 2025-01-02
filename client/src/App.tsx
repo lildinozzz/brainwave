@@ -9,6 +9,7 @@ import { pathsConfig } from '@config';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { store } from '@store';
 import { Provider } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -27,6 +28,8 @@ export const App = () => {
   return (
     <Provider store={store}>
       <RouterProvider router={router} />
+
+      <Toaster position='top-center' reverseOrder={false} />
     </Provider>
   );
 };

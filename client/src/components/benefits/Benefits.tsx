@@ -1,4 +1,4 @@
-import { setIsChatOpen } from 'src/store/reducers/common-ui/dispatchers';
+import { setIsChatOpened } from 'src/store/reducers/common-ui/dispatchers';
 import { Arrow, ClipPath } from '../../assets/svg';
 import { benefits } from '../../constants';
 import { GradientLight } from '../design/Benefits';
@@ -18,7 +18,7 @@ export const Benefits = () => {
           {benefits.map((item) => (
             <div
               className='cursor-pointer block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[24rem]'
-              onClick={() => setIsChatOpen(true)}
+              onClick={() => setIsChatOpened(true)}
               style={{
                 backgroundImage: `url(${item.backgroundUrl})`,
               }}

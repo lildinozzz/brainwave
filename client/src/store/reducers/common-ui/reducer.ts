@@ -3,7 +3,7 @@ import * as reducers from './reducers';
 import { TCommonUIInitialState } from 'src/types/store.types';
 
 export const initialState: TCommonUIInitialState = {
-  isChatOpen: false,
+  isChatOpened: false,
 };
 
 export const { actions, reducer } = createSlice({

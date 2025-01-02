@@ -3,11 +3,11 @@ import * as reducers from './reducers';
 import { TPaymentState } from 'src/types/store.types';
 
 export const initialState: TPaymentState = {
-  plan: null,
+  selectedPlan: null,
 };
 
 export const { actions, reducer } = createSlice({
-  name: 'pricing',
+  name: 'payment',
   initialState,
   reducers,
 });

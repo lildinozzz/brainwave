@@ -1,4 +1,4 @@
 import { bindActions } from '@utils';
 import { actions } from './reducer';
 
-export const { setPlan } = bindActions(actions);
+export const { setSelectedPlan } = bindActions(actions);
