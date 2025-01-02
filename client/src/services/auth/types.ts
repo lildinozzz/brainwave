@@ -17,7 +17,7 @@ export type TAuthState = {
   accessToken: string;
   user: TUserStatusType;
   isAuthed: boolean;
-  successInvoiceCount: number;
+  successInvoiceCount?: number;
 };
 
 export type TAuthForm = {

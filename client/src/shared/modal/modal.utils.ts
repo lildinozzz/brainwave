@@ -1,6 +1,6 @@
-import { JSX, useCallback, useContext, useId } from "react";
+import { JSX, useCallback, useContext, useId } from 'react';
 
-import { ModalContext } from "./modalContext";
+import { ModalContext } from './modalContext';
 
 export type TModalProps = {
   onClose(): void;
@@ -43,7 +43,7 @@ export const createModalHook = <T>(mount: (props: T) => JSX.Element) => {
     const context = useContext(ModalContext);
 
     if (!context) {
-      throw new Error("useModal must be used within ModalProvider");
+      throw new Error('useModal must be used within ModalProvider');
     }
 
     const { openModal, closeModal } = context;

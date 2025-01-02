@@ -5,31 +5,25 @@ import { TAuthForm, TAuthState, TBackendAuthInfo } from './types';
 class AuthService {
   constructor(private client: AxiosInstance) {}
 
-  async login(formData: TAuthForm): Promise<TAuthState> {
-    const res = await this.client.post<TBackendAuthInfo>(
-      '/auth/login',
-      formData
-    );
-    if (res.status !== 200) return Promise.reject(new Error('Failed login'));
-    return {
-      ...res.data,
-      user: { ...res.data.user, status: 'logged' },
-      isAuthed: true,
-    };
-  }
+  async authenticate(formData: TAuthForm): Promise<TAuthState> {
+    try {
+      const response = await this.client.post<TBackendAuthInfo>(
+        '/auth/authenticate',
+        formData
+      );
 
-  async register(formData: TAuthForm): Promise<TAuthState> {
-    const response = await this.client.post<TBackendAuthInfo>(
-      'auth/signup',
-      formData
-    );
-    if (response.status !== 200)
-      return Promise.reject(new Error('ошибка на фронте с регой'));
-    return {
-      ...response.data,
-      user: { ...response.data.user, status: 'logged' },
-      isAuthed: true,
-    };
+      if (response.status !== 200)
+        return Promise.reject(new Error('ошибка на фронте с регой'));
+
+      return {
+        ...response.data,
+        user: { ...response.data.user, status: 'logged' },
+        isAuthed: true,
+      };
+    } catch (error) {
+      console.error('Error during registration request:', error);
+      return Promise.reject(new Error('Ошибка при отправке запроса'));
+    }
   }
 
   async refresh(): Promise<TAuthState> {
@@ -48,6 +42,4 @@ class AuthService {
   }
 }
 
-const authService = new AuthService(authAxiosInstance);
-
-export default authService;
+export const authService = new AuthService(authAxiosInstance);

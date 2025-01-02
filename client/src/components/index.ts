@@ -17,3 +17,4 @@ export { Roadmap } from './roadmap';
 export { Footer } from './footer';
 export { Chat } from './chat';
 export { PricingCard } from './pricing-card';
+export { Input } from './input';

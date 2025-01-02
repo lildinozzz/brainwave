@@ -80,6 +80,12 @@ export const navigation: TNavigation[] = [
     url: pathsConfig.signIn.key,
     onlyMobile: true,
   },
+  {
+    id: '6',
+    title: 'Logout',
+    url: pathsConfig.logout.key,
+    onlyMobile: true,
+  },
 ];
 
 export const heroIcons = [homeSmile, file02, searchMd, plusSquare];

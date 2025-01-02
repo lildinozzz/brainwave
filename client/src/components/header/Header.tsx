@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { brainwave } from '../../assets';
 import { navigation } from '../../constants';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
@@ -8,18 +8,45 @@ import { Button } from '@components';
 import { pathsConfig } from '@config';
 import { scrollToNavElement } from '@utils';
 import { usePreventBodyScroll } from '@hooks';
+import { useAuthModal } from 'src/features/auth/AuthModal';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
+import { userInfoSelectors } from 'src/store/reducers/user-info/selectors';
+import { logout } from 'src/store/reducers/user-info/reducers';
 
 export const Header = () => {
+  const dispatch = useAppDispatch();
+  const { isAuthed } = useAppSelector(userInfoSelectors.userInfo);
   const [isOpenedNavigation, setIsOpenedNavigation] = useState(false);
-  usePreventBodyScroll(isOpenedNavigation);
   const location = useLocation();
+  const [AuthModal] = useAuthModal();
 
-  const toggleNavigation = () => setIsOpenedNavigation(!isOpenedNavigation);
+  usePreventBodyScroll(isOpenedNavigation);
+
+  useEffect(() => {
+    if (
+      [pathsConfig.signUp.key, pathsConfig.signIn.key].includes(location.hash)
+    ) {
+      AuthModal({});
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.hash]);
+
+  const toggleNavigation = () =>
+    setIsOpenedNavigation((prevState) => !prevState);
 
   const handleNavigationClick = (key: string) => {
+    if (key === pathsConfig.logout.key) {
+      dispatch(logout());
+      setIsOpenedNavigation(false);
+      return;
+    }
+
     scrollToNavElement(key);
     setIsOpenedNavigation(false);
   };
+
+  const handleLogout = () => dispatch(logout());
 
   return (
     <div
@@ -41,43 +68,78 @@ export const Header = () => {
           } fixed top-[5rem] left-0 right-0 bottom-0 bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent`}
         >
           <div className='relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row'>
-            {navigation.map((item) => (
-              <RouterLink
-                key={item.id}
-                to={item.url}
-                onClick={() => handleNavigationClick(item.url)}
-                className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
-                  item.onlyMobile ? 'lg:hidden' : ''
-                } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
-                  item.url === location.hash
-                    ? 'z-2 lg:text-n-1'
-                    : 'lg:text-n-1/50'
-                } ${
-                  location.pathname === pathsConfig.payment.link
-                    ? 'md:hidden'
-                    : ''
-                } lg:leading-5 lg:hover:text-n-1 xl:px-12`}
-              >
-                {item.title}
-              </RouterLink>
-            ))}
+            {navigation.map((item) => {
+              const shouldHideLogoutItem =
+                !isAuthed && item.url === pathsConfig.logout.key;
+
+              const shouldHideAuthItems =
+                isAuthed &&
+                (item.url === pathsConfig.signIn.key ||
+                  item.url === pathsConfig.signUp.key);
+
+              if (shouldHideLogoutItem || shouldHideAuthItems) {
+                return null;
+              }
+
+              return (
+                <RouterLink
+                  key={item.id}
+                  to={item.url}
+                  onClick={() => handleNavigationClick(item.url)}
+                  className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
+                    item.onlyMobile ? 'lg:hidden' : ''
+                  } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
+                    item.url === location.hash
+                      ? 'z-2 lg:text-n-1'
+                      : 'lg:text-n-1/50'
+                  } ${
+                    location.pathname === pathsConfig.payment.link
+                      ? 'md:hidden'
+                      : ''
+                  }  lg:leading-5 lg:hover:text-n-1 xl:px-12`}
+                >
+                  {item.title}
+                </RouterLink>
+              );
+            })}
           </div>
 
           <HamburgerMenu />
         </nav>
 
-        <RouterLink
-          to='#signup'
-          className='button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block'
-        >
-          New account
-        </RouterLink>
-        <RouterLink
-          to='#signIn'
-          className='button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block'
-        >
-          Sign In
-        </RouterLink>
+        {!isAuthed && (
+          <>
+            <RouterLink
+              to={pathsConfig.signUp.key}
+              className={`button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block ${
+                pathsConfig.signUp.key === location.hash
+                  ? 'z-2 lg:text-n-1'
+                  : 'lg:text-n-1/50'
+              }`}
+            >
+              New account
+            </RouterLink>
+            <RouterLink
+              to={pathsConfig.signIn.key}
+              className={`button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block ${
+                pathsConfig.signIn.link === location.hash
+                  ? 'z-2 lg:text-n-1'
+                  : 'lg:text-n-1/50'
+              }`}
+            >
+              Sign In
+            </RouterLink>
+          </>
+        )}
+
+        {isAuthed && (
+          <Button
+            className='hidden lg:block text-n-1/50'
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>
+        )}
 
         <Button
           className='ml-auto lg:hidden'

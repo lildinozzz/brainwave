@@ -12,6 +12,7 @@ export interface IPathsConfig {
   success: IRoute;
   signIn: IRoute;
   signUp: IRoute;
+  logout: IRoute;
 }
 
 export const pathsConfig: IPathsConfig = {
@@ -46,12 +47,17 @@ export const pathsConfig: IPathsConfig = {
   },
 
   signIn: {
-    key: 'signIn',
-    link: '/signIn',
+    key: '#signIn',
+    link: '/sign-in',
   },
 
   signUp: {
-    key: 'signUp',
-    link: '/signUp',
+    key: '#signUp',
+    link: '/sign-up',
+  },
+
+  logout: {
+    key: '#logout',
+    link: '/logout',
   },
 };

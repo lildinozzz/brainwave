@@ -1,5 +1,5 @@
 import { TStore } from 'src/types/store.types';
 
-export const paymentSelectors = {
+export const paymentInfoSelectors = {
   paymentInfo: (store: TStore) => store.payment,
 };

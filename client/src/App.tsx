@@ -7,11 +7,18 @@ import {
 } from '@pages';
 import { pathsConfig } from '@config';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { store } from '@store';
-import { Provider } from 'react-redux';
-import { Toaster } from 'react-hot-toast';
+import { useAppDispatch } from './store/hooks';
+import { useEffect } from 'react';
+import { refreshAuth } from './store/reducers/user-info/reducers';
 
 export const App = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(refreshAuth());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const router = createBrowserRouter([
     {
       path: pathsConfig.home.link,
@@ -25,11 +32,5 @@ export const App = () => {
     },
   ]);
 
-  return (
-    <Provider store={store}>
-      <RouterProvider router={router} />
-
-      <Toaster position='top-center' reverseOrder={false} />
-    </Provider>
-  );
+  return <RouterProvider router={router} />;
 };

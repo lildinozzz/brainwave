@@ -1,6 +1,10 @@
-import { Button } from '@components';
-import { useState } from 'react';
+import { Button, Input } from '@components';
+import { pathsConfig } from '@config';
+import { usePreventBodyScroll } from '@hooks';
+import { useEffect, useState } from 'react';
 import { TModalProps, Modal, createModalHook } from 'src/shared/modal';
+import { useAppDispatch } from 'src/store/hooks';
+import { authenticate } from 'src/store/reducers/user-info/reducers';
 import { z } from 'zod';
 
 type TFormState = {
@@ -17,10 +21,16 @@ const formSchema = z.object({
 });
 
 const AuthModal = ({ onClose }: TModalProps) => {
+  usePreventBodyScroll(true);
+  const dispatch = useAppDispatch();
+  const [currentWindowHash, setCurrentWindowHash] = useState('');
   const [formState, setFormState] = useState<TFormState>({
     email: '',
     password: '',
   });
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
+    {}
+  );
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,49 +38,91 @@ const AuthModal = ({ onClose }: TModalProps) => {
       ...prevState,
       [name]: value,
     }));
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: undefined,
+    }));
   };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const result = formSchema.safeParse(formState);
+    try {
+      const result = formSchema.safeParse(formState);
 
-    console.log(result.success);
+      if (!result.success) {
+        const errorMap = result.error.errors.reduce(
+          (acc: { [key: string]: string }, curr) => {
+            acc[curr.path[0] as keyof TFormState] = curr.message;
+            return acc;
+          },
+          {}
+        );
 
-    onClose();
+        setErrors(errorMap);
+        return;
+      }
 
-    console.log('Form Submitted', formState);
+      setErrors({});
+      dispatch(authenticate(formState));
+
+      handleCloseModal();
+    } catch (error) {
+      console.error('Errorr while submitting auth data', error);
+    }
   };
+
+  const handleCloseModal = () => {
+    onClose();
+    window.location.hash = '';
+  };
+
+  const renderText = () => {
+    if (currentWindowHash === pathsConfig.signUp.key) {
+      return 'Sign Up';
+    } else {
+      return 'Sign In';
+    }
+  };
+
+  const textToRender = renderText();
+
+  useEffect(() => {
+    setCurrentWindowHash(window.location.hash);
+  }, []);
 
   return (
     <Modal.Root>
-      <Modal.Content onClose={onClose}>
-        <form onSubmit={onSubmit}>
-          <div>
-            <label htmlFor='email'>Email</label>
-            <input
-              type='email'
-              id='email'
+      <Modal.Content onClose={handleCloseModal}>
+        <form
+          onSubmit={onSubmit}
+          className='w-full h-full m-h-[410px] relative py-[20px] px-[22px] rounded-[16px] flex flex-col bg-n-8 border border-n-6'
+        >
+          <h3 className='h3 mx-auto'>{textToRender}</h3>
+
+          <div className='flex flex-col gap-14 mt-10'>
+            <Input
+              label='Email'
+              onChange={handleInputChange}
               name='email'
-              value={formState.email}
-              onChange={handleInputChange}
-              required
+              type='email'
+              isError={!!errors.email}
+              errorMessage={errors.email}
             />
-          </div>
-
-          <div>
-            <label htmlFor='password'>Пароль</label>
-            <input
-              type='password'
-              id='password'
+            <Input
+              label='Password'
+              onChange={handleInputChange}
               name='password'
-              value={formState.password}
-              onChange={handleInputChange}
-              required
+              type='password'
+              isError={!!errors.password}
+              errorMessage={errors.password}
             />
           </div>
 
-          <Button type='submit'>Войти</Button>
+          <Button className='mt-auto' theme type='submit'>
+            {textToRender}
+          </Button>
         </form>
       </Modal.Content>
     </Modal.Root>

@@ -16,12 +16,6 @@
   scroll-behavior: smooth;
 }
 
-.select {
-  font-size: 12px;
-  padding: 5px;
-  height: auto;
-}
-
 @layer base {
   body {
     @apply font-sans bg-n-8 text-n-1 text-base;
@@ -44,6 +38,10 @@
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  .modal-height-md {
+    height: calc(100vh - 420px);
   }
 
   @keyframes fadeIn {

@@ -8,88 +8,50 @@ const { User } = require('../../../db/models');
 
 const authRouter: Router = Router();
 
-authRouter.post('/register', async (req: Request, res: Response) => {
+authRouter.post('/authenticate', async (req: Request, res: Response) => {
   try {
-    const { name, email, password, isTrainer } = req.body;
+    const { email, password } = req.body;
+    const userUUID = uuidv4();
 
-    if (!name || !email || !password) {
-      res.status(400).send({ message: 'Please fill in all required fields.' });
+    if (!email || !password) {
+      res
+        .status(400)
+        .json({ message: 'Проверьте на заполненность всех полей' });
       return;
     }
 
     const [user, created] = await User.findOrCreate({
       where: { email },
       defaults: {
-        name,
-        hashpass: await bcrypt.hash(password, 10),
-        uuid: uuidv4(),
+        email,
+        password: await bcrypt.hash(password, 10),
+        UUID: userUUID,
       },
     });
 
     if (!created) {
-      res.status(409).json({ message: 'User with this email already exists.' });
-      return;
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+
+      if (!isPasswordValid) {
+        res.status(401).json({ message: 'Пароль неверный' });
+        return;
+      }
     }
 
     const plainUser = user.get();
-    delete plainUser.hashpass;
+    const { password: plainPassword, ...userWithoutPassword } = plainUser;
 
-    const { accessToken, refreshToken } = generateTokens({ user: plainUser });
-
-    res
-      .cookie('refreshToken', refreshToken, cookiesConfig.refresh)
-      .status(201)
-      .json({ accessToken, user: plainUser });
-  } catch (error) {
-    res.status(500).json({
-      message:
-        'An error occurred while processing your request. Please try again later.',
+    const { accessToken, refreshToken } = generateTokens({
+      user: userWithoutPassword,
     });
-  }
-});
-
-authRouter.post('/login', async (req: Request, res: Response) => {
-  try {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      res
-        .status(400)
-        .json({ message: 'Both email and password are required.' });
-      return;
-    }
-
-    const user = await User.findOne({
-      where: { email },
-    });
-
-    if (!user) {
-      res
-        .status(404)
-        .json({ message: 'User not found. Please check your credentials.' });
-      return;
-    }
-
-    const valid = await bcrypt.compare(password, user.hashpass);
-
-    if (!valid) {
-      res.status(401).json({ message: 'Invalid password. Please try again.' });
-      return;
-    }
-
-    const plainUser = user.get();
-    delete plainUser.hashpass;
-
-    const { accessToken, refreshToken } = generateTokens({ user: plainUser });
 
     res
       .cookie('refreshToken', refreshToken, cookiesConfig.refresh)
       .status(200)
-      .json({ accessToken, user: plainUser });
-  } catch (error) {
-    res.status(500).json({
-      message:
-        'An error occurred while processing your request. Please try again later.',
-    });
+      .json({ accessToken, user: userWithoutPassword });
+  } catch (err) {
+    console.error('Error during authentication:', err);
+    res.status(500).json({ message: 'Что-то пошло не так', error: err });
   }
 });
 
