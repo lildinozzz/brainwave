@@ -1,7 +1,7 @@
-type TPlusSvgProps = {
+type TPlusIconProps = {
   className?: string;
 };
-export const PlusSvg = ({ className = '' }: TPlusSvgProps) => {
+export const PlusIcon = ({ className = '' }: TPlusIconProps) => {
   return (
     <svg className={`${className} || ""`} width='11' height='11' fill='none'>
       <path

@@ -5,7 +5,7 @@ import {
   EMessageTypeVariants,
   TFileMessage,
   TMessage,
-} from 'src/types/chat.types';
+} from 'src/app/types/chat.types';
 
 const CHAT_HISTORY: IChatHistory[] = [];
 const API_KEY = import.meta.env.VITE_CHAT_API_KEY;

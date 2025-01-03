@@ -1,5 +1,5 @@
+import { ButtonIcon } from '@icons';
 import { Link as RouterLink } from 'react-router-dom';
-import { ButtonSvg } from 'src/assets/svg';
 
 type TLinkProps = {
   className?: string;
@@ -19,7 +19,7 @@ export const Link = ({ className, px, theme, href, children }: TLinkProps) => {
   return (
     <RouterLink to={href} className={classes}>
       <span className={spanClasses}>{children}</span>
-      {ButtonSvg(theme)}
+      {ButtonIcon(theme)}
     </RouterLink>
   );
 };

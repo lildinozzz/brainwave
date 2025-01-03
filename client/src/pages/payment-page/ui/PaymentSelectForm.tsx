@@ -1,12 +1,12 @@
 import { memo, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { brainwaveSymbol, check } from 'src/assets';
-import { pricing } from 'src/constants';
 import { useAuthModal } from 'src/features/auth/AuthModal';
 import { setSelectedPlan } from 'src/app/store/reducers/payment/dispatchers';
 import { paymentInfoSelectors } from 'src/app/store/reducers/payment/selectors';
 import { userInfoSelectors } from 'src/app/store/reducers/user-info/selectors';
 import { useAppSelector } from '@hooks';
+import { pricing } from 'src/widgets/ui/pricing/api/Pricing.api';
 
 type TPaymentSelectForm = {
   toggleContinuePaymentState: () => void;

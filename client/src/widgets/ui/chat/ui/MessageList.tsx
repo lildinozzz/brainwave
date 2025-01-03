@@ -1,6 +1,6 @@
+import { ChatIcon } from '@icons';
 import { useEffect, useRef } from 'react';
-import { ChatIcon } from 'src/assets/svg';
-import { TMessage } from 'src/types/chat.types';
+import { TMessage } from 'src/app/types/chat.types';
 
 type TMessageListProps = {
   messages: TMessage[];

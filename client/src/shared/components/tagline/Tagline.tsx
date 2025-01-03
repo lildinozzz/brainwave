@@ -1,4 +1,4 @@
-import { Brackets } from 'src/assets/svg';
+import { BracketsIcon } from '@icons';
 
 type TTaglineProps = {
   className?: string;
@@ -7,9 +7,9 @@ type TTaglineProps = {
 export const Tagline = ({ className = '', children }: TTaglineProps) => {
   return (
     <div className={`tagline flex items-center ${className}`}>
-      {Brackets('left')}
+      {BracketsIcon('left')}
       <div className='mx-3 text-n-3 '>{children}</div>
-      {Brackets('right')}
+      {BracketsIcon('right')}
     </div>
   );
 };

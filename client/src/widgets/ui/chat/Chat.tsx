@@ -1,10 +1,10 @@
 import { MessageList } from './ui/MessageList';
 import { MessageInput } from './ui/MessageInput';
-import { Arrow, ChatIcon } from 'src/assets/svg';
 import { commonUISelectors } from 'src/app/store/reducers/common-ui/selectors';
 import { setIsChatOpened } from 'src/app/store/reducers/common-ui/dispatchers';
 import { useState } from 'react';
 import { useAppSelector, usePreventBodyScroll, useChat } from '@hooks';
+import { ChatIcon, ArrowIcon } from '@icons';
 
 export const Chat = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -95,7 +95,7 @@ export const Chat = () => {
               onClick={toggleChatOpenedState}
               className='w-10 h-10 relative border-none rounded-full bg-transparent hover:bg-[#3d39ac] transition-all duration-200'
             >
-              <Arrow
+              <ArrowIcon
                 className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-90'
                 fill='#fff'
               />

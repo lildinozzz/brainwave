@@ -1,5 +1,5 @@
 import { Reducer } from '@reduxjs/toolkit';
-import { TStore } from 'src/types/store.types';
+import { TStore } from 'src/app/types/store.types';
 import { commonUI } from './common-ui';
 import { payment } from './payment';
 import { userInfo } from './user-info';

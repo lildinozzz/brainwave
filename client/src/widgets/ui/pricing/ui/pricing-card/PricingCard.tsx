@@ -1,10 +1,10 @@
 import { check } from 'src/assets';
-import { Button } from '../button';
-import { TPayment } from 'src/types/chat.types';
 import { useNavigate } from 'react-router-dom';
 import { setSelectedPlan } from 'src/app/store/reducers/payment/dispatchers';
 import { pathsConfig } from '@config';
 import { setIsChatOpened } from 'src/app/store/reducers/common-ui/dispatchers';
+import { Button } from '@components';
+import { TPayment } from '../../api/Pricing.api';
 
 type PricingCardProps = {
   item: TPayment | null;

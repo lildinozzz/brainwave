@@ -1,4 +1,4 @@
-import { ButtonSvg } from 'src/assets/svg';
+import { ButtonIcon } from '@icons';
 
 type TButtonProps = {
   className?: string;
@@ -33,7 +33,7 @@ export const Button = ({
       onClick={onClick}
     >
       <span className={spanClasses}>{children}</span>
-      {ButtonSvg(theme)}
+      {ButtonIcon(theme)}
     </button>
   );
 };

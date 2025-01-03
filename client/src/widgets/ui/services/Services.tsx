@@ -1,4 +1,3 @@
-import { ChatBubbleWing } from 'src/assets/svg';
 import { Section, Heading, Generating } from '@components';
 import {
   brainwaveServices,
@@ -8,6 +7,7 @@ import {
   service3,
 } from './assets';
 import { check, brainwaveWhiteSymbol, play, gradient } from 'src/assets';
+import { ChatBubbleWingIcon } from '@icons';
 
 export const Services = () => {
   return (
@@ -72,7 +72,7 @@ export const Services = () => {
 
               <div className='absolute top-8 right-8 max-w-[17.5rem] py-6 px-8 bg-black rounded-t-xl rounded-bl-xl font-code text-base lg:top-16 lg:right-[8.75rem] lg:max-w-[17.5rem]'>
                 Hey Brainwave, enhance this photo
-                <ChatBubbleWing className='absolute left-full bottom-0' />
+                <ChatBubbleWingIcon className='absolute left-full bottom-0' />
               </div>
             </div>
             <div className='p-4 bg-n-7 rounded-3xl overflow-hidden lg:min-h-[46rem]'>
@@ -129,7 +129,7 @@ export const Services = () => {
                   <p className='tagline absolute right-2.5 bottom-1 text-[0.625rem] text-n-3 uppercase'>
                     just now
                   </p>
-                  <ChatBubbleWing
+                  <ChatBubbleWingIcon
                     className='absolute right-full bottom-0 -scale-x-100'
                     pathClassName='fill-n-6'
                   />

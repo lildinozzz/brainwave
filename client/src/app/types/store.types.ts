@@ -1,6 +1,6 @@
 import { PayloadAction as PA } from '@reduxjs/toolkit';
-import { TPayment } from './chat.types';
 import { TAuthState, TUserFromBackend } from 'src/services/auth/types';
+import { TPayment } from 'src/widgets/ui/pricing/api/Pricing.api';
 
 export type TStore = {
   commonUI: TCommonUIInitialState;

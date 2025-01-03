@@ -1,4 +1,4 @@
-import { SectionSvg } from 'src/assets/svg';
+import { SectionIcon } from '@icons';
 
 type TSectionProps = {
   className?: string;
@@ -40,7 +40,7 @@ export const Section = ({
               crossesOffset && crossesOffset
             } pointer-events-none lg:block xl:left-10 right-10`}
           />
-          <SectionSvg crossesOffset={crossesOffset} />
+          <SectionIcon crossesOffset={crossesOffset} />
         </>
       )}
     </div>

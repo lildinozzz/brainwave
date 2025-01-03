@@ -1,8 +1,8 @@
-type TMenuSvg = {
+type TMenuIconProps = {
   isOpenedNavigation: boolean;
 };
 
-export const MenuSvg = ({ isOpenedNavigation }: TMenuSvg) => {
+export const MenuIcon = ({ isOpenedNavigation }: TMenuIconProps) => {
   return (
     <svg
       className='overflow-visible'

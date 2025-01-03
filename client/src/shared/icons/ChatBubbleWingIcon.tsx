@@ -3,7 +3,7 @@ type TChatBubbleWingProps = {
   pathClassName?: string;
 };
 
-export const ChatBubbleWing = ({
+export const ChatBubbleWingIcon = ({
   className,
   pathClassName,
 }: TChatBubbleWingProps) => {

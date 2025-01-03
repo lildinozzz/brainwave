@@ -1,5 +1,5 @@
-import { pricing } from 'src/constants';
-import { PricingCard } from '../../../../../shared/components/pricing-card';
+import { pricing } from '../../api/Pricing.api';
+import { PricingCard } from '../pricing-card/PricingCard';
 
 type TPricingListProps = {
   showAllFeatures: boolean;

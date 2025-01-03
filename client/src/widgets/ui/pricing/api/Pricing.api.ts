@@ -1,53 +1,11 @@
-import { pathsConfig } from '@config';
-import { TPayment } from 'src/types/chat.types';
-
-type TNavigation = {
+export type TPayment = {
   id: string;
   title: string;
-  url: string;
-  onlyMobile?: boolean;
+  duration?: string;
+  description: string;
+  price: string;
+  features: string[];
 };
-
-export const navigation: TNavigation[] = [
-  {
-    id: '0',
-    title: 'Features',
-    url: pathsConfig.features.key,
-  },
-  {
-    id: '1',
-    title: 'Pricing',
-    url: pathsConfig.payment.key,
-  },
-  {
-    id: '2',
-    title: 'How to use',
-    url: pathsConfig.how_to_use.key,
-  },
-  {
-    id: '3',
-    title: 'Roadmap',
-    url: pathsConfig.roadmap.key,
-  },
-  {
-    id: '4',
-    title: 'New account',
-    url: pathsConfig.signUp.key,
-    onlyMobile: true,
-  },
-  {
-    id: '5',
-    title: 'Sign in',
-    url: pathsConfig.signIn.key,
-    onlyMobile: true,
-  },
-  {
-    id: '6',
-    title: 'Logout',
-    url: pathsConfig.logout.key,
-    onlyMobile: true,
-  },
-];
 
 export const pricing: TPayment[] = [
   {

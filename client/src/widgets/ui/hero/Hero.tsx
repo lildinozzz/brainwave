@@ -1,10 +1,10 @@
 import { ScrollParallax } from 'react-just-parallax';
 import { useRef } from 'react';
 import { scrollToNavElement } from '@utils';
-import { PlusSvg } from 'src/assets/svg';
 import { Button, Generating, Section } from '@components';
 import { CompanyLogos, Notification, BackgroundCircles } from './ui';
 import { curve, heroBackground, heroIcons, robot } from './assets';
+import { PlusIcon } from '@icons';
 export const Hero = () => {
   const parallaxRef = useRef(null);
 
@@ -91,9 +91,9 @@ export const Hero = () => {
       <>
         <div className='hidden absolute top-[55.25rem] left-10 right-10 h-0.25 bg-n-6 pointer-events-none xl:block' />
 
-        <PlusSvg className='hidden absolute top-[54.9375rem] left-[2.1875rem] z-2 pointer-events-none xl:block' />
+        <PlusIcon className='hidden absolute top-[54.9375rem] left-[2.1875rem] z-2 pointer-events-none xl:block' />
 
-        <PlusSvg className='hidden absolute top-[54.9375rem] right-[2.1875rem] z-2 pointer-events-none xl:block' />
+        <PlusIcon className='hidden absolute top-[54.9375rem] right-[2.1875rem] z-2 pointer-events-none xl:block' />
       </>
     </Section>
   );

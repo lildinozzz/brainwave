@@ -7,10 +7,10 @@ import { logout } from 'src/app/store/reducers/user-info/reducers';
 import { scrollToNavElement } from '@utils';
 import { useAppDispatch, useAppSelector, usePreventBodyScroll } from '@hooks';
 import { brainwave } from 'src/assets';
-import { MenuSvg } from 'src/assets/svg';
-import { navigation } from 'src/constants';
 import { Button } from '@components';
 import { HamburgerMenu } from './ui';
+import { MenuIcon } from '@icons';
+import { navigation } from './api/Header.api';
 
 export const Header = () => {
   const dispatch = useAppDispatch();
@@ -154,7 +154,7 @@ export const Header = () => {
           px='px-3'
           onClick={toggleNavigation}
         >
-          <MenuSvg isOpenedNavigation={isOpenedNavigation} />
+          <MenuIcon isOpenedNavigation={isOpenedNavigation} />
         </Button>
       </div>
     </div>

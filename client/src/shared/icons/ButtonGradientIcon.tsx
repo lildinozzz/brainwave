@@ -1,4 +1,4 @@
-export const ButtonGradient = () => {
+export const ButtonGradientIcon = () => {
   return (
     <svg className="block" width={0} height={0}>
       <defs>

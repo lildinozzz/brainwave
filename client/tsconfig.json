@@ -8,7 +8,8 @@
       "@pages": ["./src/pages/index"],
       "@utils": ["./src/shared/utils/index"],
       "@hooks": ["src/shared/hooks/index"],
-      "@store": ["src/app/store/store"]
+      "@store": ["src/app/store/store"],
+      "@icons": ["src/shared/icons/index"]
     },
     "module": "ES2020",
     "target": "ES2020",

@@ -1,8 +1,9 @@
 import { setIsChatOpened } from 'src/app/store/reducers/common-ui/dispatchers';
 import { benefits } from './api/Benefits.api';
 import { ClipPath } from './assets';
-import { Arrow } from 'src/assets/svg';
+
 import { Section, Heading } from '@components';
+import { ArrowIcon } from '@icons';
 
 export const Benefits = () => {
   return (
@@ -36,7 +37,7 @@ export const Benefits = () => {
                   <p className='ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider'>
                     Explore more
                   </p>
-                  <Arrow />
+                  <ArrowIcon />
                 </div>
               </div>
 

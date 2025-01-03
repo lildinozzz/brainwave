@@ -1,4 +1,4 @@
-export const ButtonSvg = (theme?: boolean) => (
+export const ButtonIcon = (theme?: boolean) => (
   <>
     <svg
       className='absolute top-0 left-0'
