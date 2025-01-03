@@ -8,4 +8,6 @@ export {
   Roadmap,
   Chat,
   Footer,
+  PaymentForm,
+  PlanSelectForm,
 } from './ui';

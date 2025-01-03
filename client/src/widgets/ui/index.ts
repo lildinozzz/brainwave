@@ -7,3 +7,5 @@ export { Pricing } from './pricing';
 export { Roadmap } from './roadmap';
 export { Footer } from './footer';
 export { Chat } from './chat';
+export { PaymentForm } from './payment-form';
+export { PlanSelectForm } from './plan-select-form';

@@ -2,10 +2,10 @@ import { readFileAsBase64 } from '@utils';
 import axios from 'axios';
 import { useState } from 'react';
 import {
-  EMessageTypeVariants,
   TFileMessage,
   TMessage,
-} from 'src/app/types/chat.types';
+  EMessageTypeVariants,
+} from 'src/widgets/ui/chat/chat.types';
 
 const CHAT_HISTORY: IChatHistory[] = [];
 const API_KEY = import.meta.env.VITE_CHAT_API_KEY;

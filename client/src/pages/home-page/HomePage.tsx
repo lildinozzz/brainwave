@@ -22,7 +22,7 @@ export const HomePage = () => {
     if (redirectStatus) {
       toast.success(
         'Your payment was successful! We appreciate your trust in us.',
-        { delay: 3000 }
+        { autoClose: 3000 }
       );
       navigate(window.location.pathname, { replace: true });
     }

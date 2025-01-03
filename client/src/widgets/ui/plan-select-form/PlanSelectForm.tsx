@@ -7,12 +7,13 @@ import { userInfoSelectors } from 'src/app/store/reducers/user-info/selectors';
 import { pricing } from 'src/widgets/ui/pricing/api/Pricing.api';
 import { useAppSelector } from '@shared';
 import { BrainwaveSymbolIcon, CheckIcon } from '@shared';
+import { SelectPlanButton } from '@features';
 
 type TPaymentSelectForm = {
   toggleContinuePaymentState: () => void;
 };
 
-export const PaymentSelectForm = memo(
+export const PlanSelectForm = memo(
   ({ toggleContinuePaymentState }: TPaymentSelectForm) => {
     const { isAuthed } = useAppSelector(userInfoSelectors.userInfo);
     const { selectedPlan } = useAppSelector(paymentInfoSelectors.paymentInfo);
@@ -97,12 +98,7 @@ export const PaymentSelectForm = memo(
               ))}
             </ul>
 
-            <button
-              onClick={handleGoToPayment}
-              className='text-black w-full h-[3rem] mt-4 cursor-pointer p-5 bg-white rounded-xl font-bold isabled:opacity-50 disabled:cursor-not-allowed disabled:animate-pulse flex justify-center items-center'
-            >
-              Continue
-            </button>
+            <SelectPlanButton handleGoToPayment={handleGoToPayment} />
           </div>
         </div>
       </div>
