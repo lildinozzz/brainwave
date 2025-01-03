@@ -1,7 +1,7 @@
 import { StoreT } from 'src/app/store/store';
 import type { AxiosError } from 'axios';
 import axios from 'axios';
-import { authService } from '../auth/AuthService';
+import { refreshTokensService } from 'src/features/auth-user';
 
 const apiAxiosInstance = axios.create({
   baseURL: `${import.meta.env.VITE_APP_API_URL}/api`,
@@ -27,7 +27,7 @@ apiAxiosInstance.interceptors.response.use(
     const prevRequest = err.config;
     if (err.response?.status === 403 && !prevRequest.sent) {
       prevRequest.sent = true;
-      const { accessToken } = await authService.refresh();
+      const { accessToken } = await refreshTokensService.refresh();
       prevRequest.headers.Authorization = `Bearer ${accessToken}`;
       return apiAxiosInstance(prevRequest);
     }

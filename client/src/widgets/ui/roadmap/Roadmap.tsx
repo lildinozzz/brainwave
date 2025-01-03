@@ -1,7 +1,7 @@
 import { scrollToNavElement } from '@utils';
-import { grid, check2, loading1, gradient } from 'src/assets';
 import { Button, Heading, Section, Tagline } from '@components';
 import { roadmap } from './api/Roadmap.api';
+import { grid, check2, loading1, gradient } from './assets';
 
 export const Roadmap = () => (
   <Section className='overflow-hidden' id='roadmap'>

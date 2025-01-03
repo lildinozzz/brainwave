@@ -3,10 +3,12 @@ import recording03 from './svg/recording-03.svg';
 import disc02 from './svg/disc-02.svg';
 import chromecast from './svg/chrome-cast.svg';
 import sliders04 from './svg/sliders-04.svg';
+import play from './svg/play.svg';
 
 import service1 from './images/service-1.png';
 import service2 from './images/service-2.png';
 import service3 from './images/service-3.png';
+import gradient from './images/gradient.png';
 
 export const brainwaveServices = [
   'Photo generating',
@@ -22,4 +24,4 @@ export const brainwaveServicesIcons = [
   sliders04,
 ];
 
-export { service1, service2, service3 };
+export { service1, service2, service3, play, gradient };

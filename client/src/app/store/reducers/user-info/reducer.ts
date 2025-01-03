@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logout, refreshAuth, authenticate } from './reducers';
-import { TAuthState } from 'src/services/auth/types';
 import { toast } from 'react-toastify';
+import { logoutThunk } from 'src/features/logout-button/model/reducer';
+import { authenticateThunk, refreshTokensThunk } from 'src/features/auth-user/model/reducer';
+import { TAuthState } from 'src/shared/types/auth.types';
 
 const initialState: TAuthState = {
   accessToken: '',
@@ -16,18 +17,18 @@ export const { actions, reducer } = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(refreshAuth.fulfilled, (_, action) => action.payload);
-    builder.addCase(refreshAuth.rejected, (state) => {
+    builder.addCase(refreshTokensThunk.fulfilled, (_, action) => action.payload);
+    builder.addCase(refreshTokensThunk.rejected, (state) => {
       state.user.status = 'guest';
     });
-    builder.addCase(authenticate.fulfilled, (_, action) => {
+    builder.addCase(authenticateThunk.fulfilled, (_, action) => {
       toast.success('You are now logged in');
       return action.payload;
     });
-    builder.addCase(authenticate.rejected, () => {
+    builder.addCase(authenticateThunk.rejected, () => {
       toast.error(`Failed to log in, please try again.`);
     });
-    builder.addCase(logout.fulfilled, (state) => {
+    builder.addCase(logoutThunk.fulfilled, (state) => {
       toast.success('You are now logged out.');
       state.user.status = 'guest';
       state.accessToken = '';

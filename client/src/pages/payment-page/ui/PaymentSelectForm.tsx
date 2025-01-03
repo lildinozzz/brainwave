@@ -1,12 +1,12 @@
 import { memo, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { brainwaveSymbol, check } from 'src/assets';
-import { useAuthModal } from 'src/features/auth/AuthModal';
+import { useAuthModal } from 'src/features/auth-user/ui/AuthModal';
 import { setSelectedPlan } from 'src/app/store/reducers/payment/dispatchers';
 import { paymentInfoSelectors } from 'src/app/store/reducers/payment/selectors';
 import { userInfoSelectors } from 'src/app/store/reducers/user-info/selectors';
-import { useAppSelector } from '@hooks';
 import { pricing } from 'src/widgets/ui/pricing/api/Pricing.api';
+import { useAppSelector } from 'src/shared/hooks/useAppSelector';
+import { BrainwaveSymbolIcon, CheckIcon } from '@icons';
 
 type TPaymentSelectForm = {
   toggleContinuePaymentState: () => void;
@@ -46,7 +46,7 @@ export const PaymentSelectForm = memo(
       <div className='container pt-3'>
         <div className='flex flex-col'>
           <div className='w-auto h-auto flex justify-center items-center gap-3 mr-14'>
-            <img src={brainwaveSymbol} width={60} height={60} alt='Brainwave' />
+            <BrainwaveSymbolIcon width={60} height={60} />
             <h3 className='h3'>Brainwave</h3>
           </div>
           <p className='w-auto h-auto text-center body-2 mt-6 mb-3 text-n-3'>
@@ -90,7 +90,7 @@ export const PaymentSelectForm = memo(
                   key={index}
                   className='ml-1 flex items-start py-2 md:py-4 h-[60px]'
                 >
-                  <img src={check} alt='check' width={24} height={24} />
+                  <CheckIcon width={24} height={24} />
 
                   <p className='body-2 ml-4'>{feature}</p>
                 </li>

@@ -9,6 +9,7 @@
       "@utils": ["./src/shared/utils/index"],
       "@hooks": ["src/shared/hooks/index"],
       "@store": ["src/app/store/store"],
+      "@features": ["src/features/index"],
       "@icons": ["src/shared/icons/index"]
     },
     "module": "ES2020",

@@ -8,7 +8,8 @@ import {
 import { StripePaymentElementChangeEvent } from '@stripe/stripe-js';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { paymentService } from 'src/services/api/PaymentService';
+import { paymentService } from 'src/features/payment-button/api';
+import { PaymentButton } from 'src/features/payment-button/ui/PaymentButton';
 
 type TPricingFormProps = {
   amount: number;
@@ -84,12 +85,12 @@ export const PaymentForm = ({ amount }: TPricingFormProps) => {
     >
       {clientSecret && <PaymentElement onChange={handleChange} />}
 
-      <button
-        className='text-black w-full h-[3rem] mt-3.5 cursor-pointer p-5 bg-white rounded-xl font-bold disabled:opacity-50 disabled:cursor-not-allowed disabled:animate-pulse flex justify-center items-center'
-        disabled={!stripe || isLoading || !isFormError}
-      >
-        {!isLoading ? `Pay $${amount}` : <Preloader className='w-8 h-8' />}
-      </button>
+      <PaymentButton
+        isLoading={isLoading}
+        stripe={stripe}
+        isFormError={isFormError}
+        amount={amount}
+      />
     </form>
   );
 };

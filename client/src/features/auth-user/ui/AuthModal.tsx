@@ -1,10 +1,11 @@
 import { pathsConfig } from '@config';
 import { useEffect, useState } from 'react';
 import { TModalProps, Modal, createModalHook } from 'src/shared/modal';
-import { authenticate } from 'src/app/store/reducers/user-info/reducers';
 import { z } from 'zod';
-import { usePreventBodyScroll, useAppDispatch } from '@hooks';
 import { Button, Input } from '@components';
+import { usePreventBodyScroll } from '@hooks';
+import { authenticateThunk } from '../model/reducer';
+import { useAppDispatch } from 'src/shared/hooks/useAppDispatch';
 
 type TFormState = {
   email: string;
@@ -64,7 +65,7 @@ const AuthModal = ({ onClose }: TModalProps) => {
       }
 
       setErrors({});
-      dispatch(authenticate(formState));
+      dispatch(authenticateThunk(formState));
 
       handleCloseModal();
     } catch (error) {

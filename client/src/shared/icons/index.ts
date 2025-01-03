@@ -10,3 +10,7 @@ export { MenuIcon } from './MenuIcon';
 export { PlusIcon } from './PlusIcon';
 export { SectionIcon } from './SectionIcon';
 export { ArrowIcon } from './ArrowIcon';
+export { PreLoaderIcon } from './PreLoaderIcon';
+export { BrainwaveSymbolIcon } from './BrainwaveSybmolIcon';
+export { BrainwaveSymbolWhiteIcon } from './BrainWaveSymbolWhiteIcon';
+export { CheckIcon } from './CheckIcon';

@@ -4,10 +4,15 @@ import {
   brainwaveServicesIcons,
   service1,
   service2,
+  play,
   service3,
+  gradient,
 } from './assets';
-import { check, brainwaveWhiteSymbol, play, gradient } from 'src/assets';
-import { ChatBubbleWingIcon } from '@icons';
+import {
+  BrainwaveSymbolWhiteIcon,
+  ChatBubbleWingIcon,
+  CheckIcon,
+} from '@icons';
 
 export const Services = () => {
   return (
@@ -41,7 +46,7 @@ export const Services = () => {
                     className='flex items-start py-4 border-t border-n-6'
                     key={index}
                   >
-                    <img width={24} height={24} src={check} alt='check' />
+                    <CheckIcon width={24} height={24} />
                     <p className='ml-4'>{service}</p>
                   </li>
                 ))}
@@ -119,12 +124,7 @@ export const Services = () => {
                 <div className='absolute top-8 left-[3.125rem] w-full max-w-[14rem] pt-2.5 pr-2.5 pb-7 pl-5 bg-n-6 rounded-t-xl rounded-br-xl font-code text-base md:max-w-[17.5rem]'>
                   Video generated!
                   <div className='absolute left-5 -bottom-[1.125rem] flex items-center justify-center w-[2.25rem] h-[2.25rem] bg-color-1 rounded-[0.75rem]'>
-                    <img
-                      src={brainwaveWhiteSymbol}
-                      width={26}
-                      height={26}
-                      alt='Brainwave'
-                    />
+                    <BrainwaveSymbolWhiteIcon width={26} height={26} />
                   </div>
                   <p className='tagline absolute right-2.5 bottom-1 text-[0.625rem] text-n-3 uppercase'>
                     just now

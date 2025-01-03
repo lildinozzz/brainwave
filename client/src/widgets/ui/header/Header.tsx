@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { pathsConfig } from '@config';
-import { useAuthModal } from 'src/features/auth/AuthModal';
+import { useAuthModal } from 'src/features/auth-user/ui/AuthModal';
 import { userInfoSelectors } from 'src/app/store/reducers/user-info/selectors';
-import { logout } from 'src/app/store/reducers/user-info/reducers';
 import { scrollToNavElement } from '@utils';
-import { useAppDispatch, useAppSelector, usePreventBodyScroll } from '@hooks';
-import { brainwave } from 'src/assets';
 import { Button } from '@components';
 import { HamburgerMenu } from './ui';
 import { MenuIcon } from '@icons';
 import { navigation } from './api/Header.api';
+import { usePreventBodyScroll } from '@hooks';
+import { LogoutButton } from '@features';
+import { useAppSelector } from 'src/shared/hooks/useAppSelector';
+import { brainwave } from './assets';
 
 export const Header = () => {
-  const dispatch = useAppDispatch();
   const { isAuthed } = useAppSelector(userInfoSelectors.userInfo);
   const [isOpenedNavigation, setIsOpenedNavigation] = useState(false);
   const location = useLocation();
@@ -37,7 +37,6 @@ export const Header = () => {
 
   const handleNavigationClick = (key: string) => {
     if (key === pathsConfig.logout.key) {
-      dispatch(logout());
       navigate(pathsConfig.home.link);
       setIsOpenedNavigation(false);
       return;
@@ -46,8 +45,6 @@ export const Header = () => {
     scrollToNavElement(key);
     setIsOpenedNavigation(false);
   };
-
-  const handleLogout = () => dispatch(logout());
 
   return (
     <div
@@ -140,14 +137,7 @@ export const Header = () => {
           </>
         )}
 
-        {isAuthed && (
-          <Button
-            className='hidden lg:block text-n-1/50'
-            onClick={handleLogout}
-          >
-            Logout
-          </Button>
-        )}
+        <LogoutButton />
 
         <Button
           className='ml-auto lg:hidden'

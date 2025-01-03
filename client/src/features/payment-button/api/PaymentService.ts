@@ -1,6 +1,6 @@
 import type { AxiosInstance } from 'axios';
-import apiAxiosInstance from './apiAxiosInstance';
 import { convertToSubCurrency } from '@utils';
+import apiAxiosInstance from 'src/features/api-axios-instances/apiAxiosInstance';
 
 class PaymentService {
   constructor(private client: AxiosInstance) {}

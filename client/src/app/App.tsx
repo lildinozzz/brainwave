@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { refreshAuth } from './store/reducers/user-info/reducers';
-import { useAppDispatch } from '@hooks';
+import { useDispatch } from 'react-redux';
+import { refreshTokensThunk } from 'src/features/auth-user/model/reducer';
+import { useAppDispatch } from 'src/shared/hooks/useAppDispatch';
 
 type TAppProps = {
   children?: React.ReactNode;
@@ -10,7 +11,7 @@ export const App = ({ children }: TAppProps) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(refreshAuth());
+    dispatch(refreshTokensThunk());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

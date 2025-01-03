@@ -1,10 +1,10 @@
-import { check } from 'src/assets';
 import { useNavigate } from 'react-router-dom';
 import { setSelectedPlan } from 'src/app/store/reducers/payment/dispatchers';
 import { pathsConfig } from '@config';
 import { setIsChatOpened } from 'src/app/store/reducers/common-ui/dispatchers';
 import { Button } from '@components';
 import { TPayment } from '../../api/Pricing.api';
+import { CheckIcon } from '@icons';
 
 type PricingCardProps = {
   item: TPayment | null;
@@ -72,7 +72,7 @@ export const PricingCard = ({
       <ul>
         {pricingFeatures?.map((feature, index) => (
           <li className='flex items-start py-5 border-t border-n-6' key={index}>
-            <img src={check} alt='check' width={24} height={24} />
+            <CheckIcon width={24} height={24} />
 
             <p className='body-2 ml-4'>{feature}</p>
           </li>

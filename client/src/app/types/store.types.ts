@@ -1,5 +1,5 @@
 import { PayloadAction as PA } from '@reduxjs/toolkit';
-import { TAuthState, TUserFromBackend } from 'src/services/auth/types';
+import { TAuthState, TUserFromBackend } from 'src/shared/types/auth.types';
 import { TPayment } from 'src/widgets/ui/pricing/api/Pricing.api';
 
 export type TStore = {

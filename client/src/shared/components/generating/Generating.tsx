@@ -1,4 +1,4 @@
-import { Preloader } from '../pre-loader';
+import { Preloader } from '@components';
 
 type TGeneratingProps = {
   className?: string;
