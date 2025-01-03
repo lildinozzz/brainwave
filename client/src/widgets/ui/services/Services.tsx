@@ -1,4 +1,11 @@
-import { Section, Heading, Generating } from '@components';
+import {
+  Section,
+  Heading,
+  Generating,
+  BrainwaveSymbolWhiteIcon,
+  ChatBubbleWingIcon,
+  CheckIcon,
+} from '@shared';
 import {
   brainwaveServices,
   brainwaveServicesIcons,
@@ -8,11 +15,6 @@ import {
   service3,
   gradient,
 } from './assets';
-import {
-  BrainwaveSymbolWhiteIcon,
-  ChatBubbleWingIcon,
-  CheckIcon,
-} from '@icons';
 
 export const Services = () => {
   return (

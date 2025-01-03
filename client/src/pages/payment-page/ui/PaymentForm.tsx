@@ -1,4 +1,4 @@
-import { PagePreLoader, Preloader } from '@components';
+import { PagePreLoader, Preloader } from '@shared';
 import { pathsConfig } from '@config';
 import {
   useStripe,

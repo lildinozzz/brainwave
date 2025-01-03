@@ -1,4 +1,4 @@
-import { BracketsIcon } from '@icons';
+import { BracketsIcon } from '@shared';
 
 type TTaglineProps = {
   className?: string;

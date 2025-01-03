@@ -1,5 +1,5 @@
-import { ButtonIcon } from '@icons';
 import { Link as RouterLink } from 'react-router-dom';
+import { ButtonIcon } from '@shared';
 
 type TLinkProps = {
   className?: string;

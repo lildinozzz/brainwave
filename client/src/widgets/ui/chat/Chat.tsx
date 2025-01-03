@@ -3,9 +3,9 @@ import { MessageInput } from './ui/MessageInput';
 import { commonUISelectors } from 'src/app/store/reducers/common-ui/selectors';
 import { setIsChatOpened } from 'src/app/store/reducers/common-ui/dispatchers';
 import { useState } from 'react';
-import { ChatIcon, ArrowIcon } from '@icons';
-import { usePreventBodyScroll, useChat } from '@hooks';
-import { useAppSelector } from 'src/shared/hooks/useAppSelector';
+
+import { useAppSelector } from '@shared';
+import { usePreventBodyScroll, useChat, ArrowIcon, ChatIcon } from '@shared';
 
 export const Chat = () => {
   const [isHovered, setIsHovered] = useState(false);

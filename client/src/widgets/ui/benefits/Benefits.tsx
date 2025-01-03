@@ -1,9 +1,7 @@
 import { setIsChatOpened } from 'src/app/store/reducers/common-ui/dispatchers';
 import { benefits } from './api/Benefits.api';
 import { ClipPath } from './assets';
-
-import { Section, Heading } from '@components';
-import { ArrowIcon } from '@icons';
+import { Section, Heading, ArrowIcon } from '@shared';
 
 export const Benefits = () => {
   return (

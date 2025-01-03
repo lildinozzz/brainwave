@@ -1,10 +1,9 @@
 import { ScrollParallax } from 'react-just-parallax';
 import { useRef } from 'react';
 import { scrollToNavElement } from '@utils';
-import { Button, Generating, Section } from '@components';
 import { CompanyLogos, Notification, BackgroundCircles } from './ui';
 import { curve, heroBackground, heroIcons, robot } from './assets';
-import { PlusIcon } from '@icons';
+import { Section, Button, Generating, PlusIcon } from '@shared';
 export const Hero = () => {
   const parallaxRef = useRef(null);
 

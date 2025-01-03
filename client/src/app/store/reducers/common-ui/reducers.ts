@@ -1,7 +1,7 @@
 import {
   TCommonUIInitialState,
   TsetIsChatOpened,
-} from 'src/app/types/store.types';
+} from 'src/shared/types/store.types';
 
 export const setIsChatOpened = (
   state: TCommonUIInitialState,

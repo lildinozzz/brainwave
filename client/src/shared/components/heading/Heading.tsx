@@ -1,4 +1,4 @@
-import { Tagline } from '@components';
+import { Tagline } from '@shared';
 
 type THeadingProps = {
   className?: string;

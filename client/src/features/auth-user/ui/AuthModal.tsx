@@ -1,11 +1,16 @@
 import { pathsConfig } from '@config';
 import { useEffect, useState } from 'react';
-import { TModalProps, Modal, createModalHook } from 'src/shared/modal';
 import { z } from 'zod';
-import { Button, Input } from '@components';
-import { usePreventBodyScroll } from '@hooks';
 import { authenticateThunk } from '../model/reducer';
-import { useAppDispatch } from 'src/shared/hooks/useAppDispatch';
+import {
+  useAppDispatch,
+  usePreventBodyScroll,
+  Button,
+  Input,
+  Modal,
+  createModalHook,
+  TModalProps,
+} from '@shared';
 
 type TFormState = {
   email: string;

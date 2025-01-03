@@ -1,4 +1,4 @@
-import { SectionIcon } from '@icons';
+import { SectionIcon } from '@shared';
 
 type TSectionProps = {
   className?: string;

@@ -4,14 +4,12 @@ import { pathsConfig } from '@config';
 import { useAuthModal } from 'src/features/auth-user/ui/AuthModal';
 import { userInfoSelectors } from 'src/app/store/reducers/user-info/selectors';
 import { scrollToNavElement } from '@utils';
-import { Button } from '@components';
 import { HamburgerMenu } from './ui';
-import { MenuIcon } from '@icons';
 import { navigation } from './api/Header.api';
-import { usePreventBodyScroll } from '@hooks';
 import { LogoutButton } from '@features';
-import { useAppSelector } from 'src/shared/hooks/useAppSelector';
+import { useAppSelector } from '@shared';
 import { brainwave } from './assets';
+import { Button, MenuIcon, usePreventBodyScroll } from '@shared';
 
 export const Header = () => {
   const { isAuthed } = useAppSelector(userInfoSelectors.userInfo);

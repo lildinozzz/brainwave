@@ -1,4 +1,4 @@
-import { ButtonIcon } from '@icons';
+import { ButtonIcon } from '@shared';
 
 type TButtonProps = {
   className?: string;

@@ -1,7 +1,7 @@
 import { MouseEvent, PropsWithChildren } from 'react';
 import ReactDOM from 'react-dom';
 import { TModalContentProps } from './Modal.types';
-import { usePreventBodyScroll } from '@hooks';
+import { usePreventBodyScroll } from '../hooks';
 
 const Root = ({ children }: PropsWithChildren) => {
   usePreventBodyScroll(true);

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import * as reducers from './reducers';
-import { TPaymentState } from 'src/app/types/store.types';
+import { TPaymentState } from 'src/shared/types/store.types';
 
 export const initialState: TPaymentState = {
   selectedPlan: null,

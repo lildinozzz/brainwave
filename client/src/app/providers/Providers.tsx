@@ -1,11 +1,12 @@
 import { Provider } from 'react-redux';
 import { store } from 'src/app/store/store';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { ModalProvider } from 'src/shared/modal';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Root, NotFoundPage, HomePage, PaymentPage } from '@pages';
 import { pathsConfig } from '@config';
+import { ModalProvider } from '@shared';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 type TProvidersProps = {
   children?: React.ReactNode;

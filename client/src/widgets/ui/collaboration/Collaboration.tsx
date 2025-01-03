@@ -1,7 +1,6 @@
-import { Section, Button } from '@components';
+import { Section, CheckIcon, Button, BrainwaveSymbolIcon } from '@shared';
 import { collabContent, collabText, collabApps } from './api/Collaboration.api';
 import { curve1, curve2 } from './assets';
-import { BrainwaveSymbolIcon, CheckIcon } from '@icons';
 
 export const Collaboration = () => {
   return (

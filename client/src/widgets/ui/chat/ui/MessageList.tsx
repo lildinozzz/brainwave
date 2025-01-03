@@ -1,4 +1,4 @@
-import { ChatIcon } from '@icons';
+import { ChatIcon } from '@shared';
 import { useEffect, useRef } from 'react';
 import { TMessage } from 'src/app/types/chat.types';
 

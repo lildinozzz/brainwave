@@ -5,8 +5,8 @@ import { setSelectedPlan } from 'src/app/store/reducers/payment/dispatchers';
 import { paymentInfoSelectors } from 'src/app/store/reducers/payment/selectors';
 import { userInfoSelectors } from 'src/app/store/reducers/user-info/selectors';
 import { pricing } from 'src/widgets/ui/pricing/api/Pricing.api';
-import { useAppSelector } from 'src/shared/hooks/useAppSelector';
-import { BrainwaveSymbolIcon, CheckIcon } from '@icons';
+import { useAppSelector } from '@shared';
+import { BrainwaveSymbolIcon, CheckIcon } from '@shared';
 
 type TPaymentSelectForm = {
   toggleContinuePaymentState: () => void;

@@ -1,6 +1,6 @@
 import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
-import { SatisfiedIcon, FileIcon, ArrowTopIcon } from '@icons';
+import { SatisfiedIcon, FileIcon, ArrowTopIcon } from '@shared';
 import { TFileMessage } from 'src/app/types/chat.types';
 
 type TMessageInputProps = {

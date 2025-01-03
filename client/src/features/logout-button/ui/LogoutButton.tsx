@@ -1,8 +1,8 @@
-import { Button } from '@components';
+import { Button } from '@shared';
 import { userInfoSelectors } from 'src/app/store/reducers/user-info/selectors';
 import { logoutThunk } from '../model/reducer';
-import { useAppDispatch } from 'src/shared/hooks/useAppDispatch';
-import { useAppSelector } from 'src/shared/hooks/useAppSelector';
+import { useAppDispatch } from '@shared';
+import { useAppSelector } from '@shared';
 
 export const LogoutButton = () => {
   const { isAuthed } = useAppSelector(userInfoSelectors.userInfo);

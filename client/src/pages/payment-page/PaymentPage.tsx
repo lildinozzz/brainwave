@@ -5,7 +5,7 @@ import { convertToSubCurrency } from '@utils';
 import { PaymentForm } from './ui/PaymentForm';
 import { paymentInfoSelectors } from 'src/app/store/reducers/payment/selectors';
 import { loadStripe } from '@stripe/stripe-js';
-import { useAppSelector } from 'src/shared/hooks/useAppSelector';
+import { useAppSelector } from '@shared';
 
 const STRIPE_PROMISE = loadStripe(import.meta.env.VITE_STRIPE_PUBLISH_KEY);
 

@@ -1,7 +1,6 @@
+import { useAppDispatch } from '@shared';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { refreshTokensThunk } from 'src/features/auth-user/model/reducer';
-import { useAppDispatch } from 'src/shared/hooks/useAppDispatch';
 
 type TAppProps = {
   children?: React.ReactNode;

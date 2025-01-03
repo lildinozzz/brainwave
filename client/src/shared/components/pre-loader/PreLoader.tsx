@@ -1,4 +1,4 @@
-import { PreLoaderIcon } from '@icons';
+import { PreLoaderIcon } from '@shared';
 
 type TPreLoaderProps = {
   className?: string;

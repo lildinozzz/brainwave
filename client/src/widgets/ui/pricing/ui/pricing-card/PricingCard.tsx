@@ -2,9 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { setSelectedPlan } from 'src/app/store/reducers/payment/dispatchers';
 import { pathsConfig } from '@config';
 import { setIsChatOpened } from 'src/app/store/reducers/common-ui/dispatchers';
-import { Button } from '@components';
-import { TPayment } from '../../api/Pricing.api';
-import { CheckIcon } from '@icons';
+import { Button, CheckIcon } from '@shared';
+import { TPayment } from 'src/shared/types/store.types';
 
 type PricingCardProps = {
   item: TPayment | null;

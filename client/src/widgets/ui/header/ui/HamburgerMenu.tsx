@@ -1,6 +1,6 @@
-import { Rings, BackgroundCircles } from '@components';
 import { SideLines } from './SideLines';
 import { background } from '../assets';
+import { Rings, BackgroundCircles } from '@shared';
 
 export const HamburgerMenu = () => {
   return (

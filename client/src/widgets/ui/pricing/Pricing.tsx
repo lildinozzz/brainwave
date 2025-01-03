@@ -1,7 +1,7 @@
-import { Section, Heading, Button } from '@components';
 import { useState } from 'react';
 import { PricingList } from 'src/widgets/ui/pricing/ui/pricing-list';
 import { stars, lines, smallSphere } from './assets';
+import { Section, Heading, Button } from '@shared';
 
 export const Pricing = () => {
   const [showAllFeatures, setShowAllFeatures] = useState(false);

@@ -1,4 +1,4 @@
-import { Preloader } from '@components';
+import { Preloader } from '@shared';
 import { Stripe } from '@stripe/stripe-js';
 
 type TPaymentButtonProps = {

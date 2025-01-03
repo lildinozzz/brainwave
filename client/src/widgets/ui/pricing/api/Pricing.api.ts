@@ -1,11 +1,4 @@
-export type TPayment = {
-  id: string;
-  title: string;
-  duration?: string;
-  description: string;
-  price: string;
-  features: string[];
-};
+import { TPayment } from 'src/shared/types/store.types';
 
 export const pricing: TPayment[] = [
   {

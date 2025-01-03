@@ -1,8 +1,8 @@
 import { Reducer } from '@reduxjs/toolkit';
-import { TStore } from 'src/app/types/store.types';
 import { commonUI } from './common-ui';
 import { payment } from './payment';
 import { userInfo } from './user-info';
+import { TStore } from 'src/shared/types/store.types';
 
 type TReducer = {
   [K in keyof TStore]: Reducer<TStore[K]>;
