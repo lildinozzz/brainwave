@@ -38,3 +38,9 @@ Ensure your environment is properly configured to simulate payments (test enviro
 Always use test credentials and cards in the sandbox mode to avoid real transactions.
 Conclusion
 With these steps, you should be able to set up the project and test various transaction scenarios. If you encounter any issues, make sure to check the server logs or the console for error details.
+
+
+TECH STACK: 
+Frontend: Typescript, React, Redux, Vite, React-Router-Dom, Tailwind CSS, Zod, React-Toastify, Google-API-AI-Chat.
+Backend: Typescript, Express, Sequelize, JWT-Tokens, PostgreSQL. 
+Other: PostCSS, Stripe, Emoji Mart, Axios, bcrypt, CORS, env.

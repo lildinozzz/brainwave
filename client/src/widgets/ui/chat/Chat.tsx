@@ -5,7 +5,8 @@ import { setIsChatOpened } from 'src/app/store/reducers/common-ui/dispatchers';
 import { useState } from 'react';
 
 import { useAppSelector } from '@shared';
-import { usePreventBodyScroll, useChat, ArrowIcon, ChatIcon } from '@shared';
+import { usePreventBodyScroll, ArrowIcon, ChatIcon } from '@shared';
+import { useChat } from './composable/useChat';
 
 export const Chat = () => {
   const [isHovered, setIsHovered] = useState(false);

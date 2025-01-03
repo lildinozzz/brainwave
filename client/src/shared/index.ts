@@ -12,12 +12,7 @@ export {
   Tagline,
 } from './components';
 
-export {
-  useChat,
-  usePreventBodyScroll,
-  useAppDispatch,
-  useAppSelector,
-} from './hooks';
+export { usePreventBodyScroll, useAppDispatch, useAppSelector } from './hooks';
 
 export {
   ArrowIcon,
