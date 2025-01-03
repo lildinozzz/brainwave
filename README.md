@@ -1,6 +1,8 @@
 Project Setup and Testing Guide
 This guide will walk you through setting up the project and testing various transaction scenarios, including successful payments, failures, and 3D Secure authentication.
 
+Deployed: https://brainwave-ai-ashen-six.vercel.app/#features
+
 To get started with the project, follow these steps:
 
 // FRONTEND & Backend 
