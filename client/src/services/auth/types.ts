@@ -26,3 +26,4 @@ export type TAuthForm = {
 };
 
 export type TBackendAuthInfo = { accessToken: string; user: TUserFromBackend };
+

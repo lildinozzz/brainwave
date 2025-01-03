@@ -106,29 +106,27 @@ export default {
           isDevMode ? 'warn' : 'error',
           {
             groups: [
-              // Packages react related packages come first.
-              ['^react', 'path', '^@?\\w'],
-              // Internal packages.
+              // External packages first
+              ['^react', '^@?\\w'],
+              // Internal packages (components, store, utils, etc.)
               ['^(@components)(/.*|$)', '^(@shared)(/.*|$)'],
-              // Internal packages.
               ['^(@store)(/.*|$)'],
               ['^(@types)(/.*|$)'],
               ['^(@hooks)(/.*|$)'],
-              ['^(@types)(/.*|$)'],
               ['^(@utils)(/.*|$)'],
-              // Side effect imports.
+              // Side effect imports (e.g. CSS files)
               ['^\\u0000'],
-              // Parent imports. Put .. last.
+              // Parent imports (e.g. ../some-folder)
               ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
-              // Other relative imports. Put same-folder imports and . last.
+              // Relative imports in the same folder and current folder imports
               ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
-              // config
+              // Config-related imports
               ['^(@config)(/.*|$)'],
-              // constants
+              // Constants
               ['^.+\\.constants\\.$'],
-              // types
+              // Types
               ['^.+\\.types\\.$'],
-              // Style imports.
+              // Style imports (CSS, SCSS)
               ['^.+\\.(css|scss)$'],
             ],
           },

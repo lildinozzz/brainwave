@@ -1,0 +1,9 @@
+export { Header } from './header';
+export { Hero } from './hero';
+export { Benefits } from './benefits';
+export { Collaboration } from './collaboration';
+export { Services } from './services';
+export { Pricing } from './pricing';
+export { Roadmap } from './roadmap';
+export { Footer } from './footer';
+export { Chat } from './chat';

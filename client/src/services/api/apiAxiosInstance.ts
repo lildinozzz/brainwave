@@ -1,4 +1,4 @@
-import { StoreT } from '@store';
+import { StoreT } from 'src/app/store/store';
 import type { AxiosError } from 'axios';
 import axios from 'axios';
 import { authService } from '../auth/AuthService';

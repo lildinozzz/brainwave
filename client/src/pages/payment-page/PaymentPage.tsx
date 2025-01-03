@@ -3,9 +3,9 @@ import { PaymentSelectForm } from './ui/PaymentSelectForm';
 import { Elements } from '@stripe/react-stripe-js';
 import { convertToSubCurrency } from '@utils';
 import { PaymentForm } from './ui/PaymentForm';
-import { useAppSelector } from 'src/store/hooks';
-import { paymentInfoSelectors } from 'src/store/reducers/payment/selectors';
+import { paymentInfoSelectors } from 'src/app/store/reducers/payment/selectors';
 import { loadStripe } from '@stripe/stripe-js';
+import { useAppSelector } from '@hooks';
 
 const STRIPE_PROMISE = loadStripe(import.meta.env.VITE_STRIPE_PUBLISH_KEY);
 

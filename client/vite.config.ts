@@ -20,6 +20,7 @@ export default defineConfig(({ mode }) => {
         typescript: true,
       }),
       compression(),
+      
     ],
     css: {
       modules: {

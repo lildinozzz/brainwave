@@ -1,5 +1,5 @@
 import { ActionCreatorsMapObject, bindActionCreators } from '@reduxjs/toolkit';
-import { store } from 'src/store/store';
+import { store } from 'src/app/store/store';
 
 const { dispatch: d } = store;
 

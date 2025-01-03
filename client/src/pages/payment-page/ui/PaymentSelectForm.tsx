@@ -3,10 +3,10 @@ import { toast } from 'react-toastify';
 import { brainwaveSymbol, check } from 'src/assets';
 import { pricing } from 'src/constants';
 import { useAuthModal } from 'src/features/auth/AuthModal';
-import { useAppSelector } from 'src/store/hooks';
-import { setSelectedPlan } from 'src/store/reducers/payment/dispatchers';
-import { paymentInfoSelectors } from 'src/store/reducers/payment/selectors';
-import { userInfoSelectors } from 'src/store/reducers/user-info/selectors';
+import { setSelectedPlan } from 'src/app/store/reducers/payment/dispatchers';
+import { paymentInfoSelectors } from 'src/app/store/reducers/payment/selectors';
+import { userInfoSelectors } from 'src/app/store/reducers/user-info/selectors';
+import { useAppSelector } from '@hooks';
 
 type TPaymentSelectForm = {
   toggleContinuePaymentState: () => void;

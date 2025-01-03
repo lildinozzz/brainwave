@@ -3,11 +3,12 @@
     "baseUrl": ".",
     "paths": {
       "@config": ["./config/index"],
-      "@components": ["./src/components/index"],
+      "@components": ["src/shared/components/index"],
+      "@widgets": ["src/widgets/index"],
       "@pages": ["./src/pages/index"],
       "@utils": ["./src/shared/utils/index"],
-      "@hooks": ["./src/hooks/index"],
-      "@store": ["./src/store/store"]
+      "@hooks": ["src/shared/hooks/index"],
+      "@store": ["src/app/store/store"]
     },
     "module": "ES2020",
     "target": "ES2020",

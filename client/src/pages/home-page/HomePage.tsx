@@ -7,7 +7,7 @@ import {
   Roadmap,
   Footer,
   Chat,
-} from '@components';
+} from '@widgets';
 import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
